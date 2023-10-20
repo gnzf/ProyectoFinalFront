@@ -1,0 +1,17 @@
+.allSongs-playlists{
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    padding: 0 1.5rem 0.4rem 1.5rem;
+}
+
+.allSongs-title-playlist{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+}
+
+.allSongs-title-playlist p{
+   font-size: 12px;
+}

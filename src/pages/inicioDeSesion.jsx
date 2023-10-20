@@ -1,8 +1,5 @@
 import React from 'react'
 import { useState } from 'react'
-import "./formulario.css"
-import { useNavigate } from 'react-router-dom'
-import {registrarUsuario} from "../API/rule_auth"
 
 function InicioDeSesion() {
   const [inputPassword, setInputPassword] = useState("");

@@ -1,18 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import './index.css'
-import InicioDeSesion from './pages/inicioDeSesion'
+import Home from './pages/home'
+import MusicaContextual from './pages/musicaContextual'
+import PlaylistGenerada from './pages/PlaylistGenerada'
 
 const router = createBrowserRouter([
   {
-    path: "/home",
+    path: "/",
     element: <Home/>
   },
   {
-    path: "/login",
-    element: <InicioDeSesion/>
+    path: "/musicaContextual",
+    element: <MusicaContextual/>
   },
-
+  {
+    path: "/playlistGenerada",
+    element: <PlaylistGenerada/>
+  },
+  
   
 ])
 

@@ -16,4 +16,10 @@
     --color-modonoche2: #E4E6E8;
     --color-modonoche3: #FF8E0A;
   }
+
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
   
