@@ -1,6 +1,6 @@
 import "../../styles/iniciodeapp/inicioDeApp.css";
 
-function inicioDeApp() {
+function InicioDeApp() {
   return (
     <>
       <div className="container-start">
@@ -48,4 +48,4 @@ function inicioDeApp() {
   );
 }
 
-export default inicioDeApp;
+export default InicioDeApp;

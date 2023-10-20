@@ -1,34 +1,33 @@
-import React from 'react'
-import "./footerHome.css"
-import homeFooter from "../../../public/images/home/inicio.svg"
-import searchFooter from "../../../public/images/home/search.svg"
-import friendsFooter from "../../../public/images/home/amigos.svg"
-import userFooter from "../../../public/images/home/perfil.svg"
+import React from "react";
+import "../../styles/home/FooterHome.css";
+import homeFooter from "../../../public/image/home/perfil/home.svg";
+import searchFooter from "../../../public/image/home/perfil/search.svg";
+import friendsFooter from "../../../public/image/home/perfil/friends.svg";
+import userFooter from "../../../public/image/home/perfil/user.svg";
 
 function FooterHome() {
-
-  let ruta = "inicio"
+  let ruta = "perfil";
 
   return (
-    <div className={'container-footer-home ' + ruta}>
-            <a className='container-explorer-home'>
-                <img src="/images/home/inicio.svg" alt='home'/>
-                <span>Inicio</span>
-            </a>
-            <a className='container-explorer-home'>
-                <img src="/images/home/search.svg" alt='search'/>
-                <span>Buscador</span>
-            </a>
-            <a className='container-explorer-home'>
-                <img src="/images/home/amigos.svg" alt='profile'/>
-                <span>Perfil</span>
-            </a>
-            <a className='container-explorer-home'>
-                <img src="/images/home/perfil.svg" alt='friends'/>
-                <span>Amigos</span>
-            </a>
+    <div className={"container-footer-home " + ruta}>
+      <a className="container-explorer-home">
+        <img src={homeFooter} alt="home" />
+        <span>Inicio</span>
+      </a>
+      <a className="container-explorer-footer">
+        <img src={searchFooter} alt="search" />
+        <span>Buscador</span>
+      </a>
+      <a className="container-explorer-profile">
+        <img src={friendsFooter} alt="profile" />
+        <span>Perfil</span>
+      </a>
+      <a className="container-explorer-friends">
+        <img src={userFooter} alt="friends" />
+        <span>Amigos</span>
+      </a>
     </div>
-  )
+  );
 }
 
-export default FooterHome
+export default FooterHome;

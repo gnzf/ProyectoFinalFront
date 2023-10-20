@@ -1,5 +1,5 @@
 import Perfil from "../components/perfil/perfil";
-function perfil() {
+function PerfilUsuario() {
   return (
     <div>
       <Perfil></Perfil>
@@ -7,4 +7,4 @@ function perfil() {
   );
 }
 
-export default perfil;
+export default PerfilUsuario;

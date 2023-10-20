@@ -2,10 +2,10 @@ import React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-// import InicioDeApp from "./pages/iniciodeapp";
-// import Carrusel from "./components/cupidomusical/Carrusel";
-// import Perfil from "./pages/perfil";
-// import Configuration from "./components/perfil/Configuration";
+import InicioDeApp from "./pages/iniciodeapp";
+import Carrusel from "./components/cupidomusical/Carrusel";
+import PerfilUsuario from "./pages/perfil";
+import Configuration from "./components/perfil/Configuration";
 import Registro from "./pages/registro";
 import Home from "./pages/home";
 import RegistoCrearCuenta from "./pages/RegistoCrearCuenta";
@@ -14,7 +14,7 @@ import PlaylistGenerada from './pages/PlaylistGenerada'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <Home/>
 },
     {
@@ -32,6 +32,22 @@ const router = createBrowserRouter([
   {
     path: "/playlistGenerada",
     element: <PlaylistGenerada/>
+  },
+  {
+    path: "/",
+    element: <InicioDeApp/>
+  },
+  {
+    path: "/tinderMusica",
+    element: <Carrusel/>
+  },
+  {
+    path: "/perfil",
+    element: <PerfilUsuario/>
+  },
+  {
+    path: "/configuracionPerfil",
+    element: <Configuration/>
   },
   
 ])

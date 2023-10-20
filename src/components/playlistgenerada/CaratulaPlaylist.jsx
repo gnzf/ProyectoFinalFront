@@ -4,7 +4,7 @@ import pruebaCaratula from "../../../public/images/playlistgenerada/image-placeh
 
 function CaratulaPlaylist(props) {
   return (
-      <div className="card-playlists">
+      <div className="card-playlists-caratula">
             <img src="/images/playlistgenerada/image-placeholder.svg"/>
             <img src="/images/playlistgenerada/image-placeholder.svg"/>
             <img src="/images/playlistgenerada/image-placeholder.svg"/>
