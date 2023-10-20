@@ -1,0 +1,14 @@
+.input-general {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0px 16px;
+    border: 2px solid var(--medios-tonos-gris-1, #E4E6E8);
+    margin: 12px 0px 12px 0px;
+    padding: 0px 16px;
+    
+}
+

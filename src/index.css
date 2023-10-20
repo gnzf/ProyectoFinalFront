@@ -1,3 +1,9 @@
+* {
+  padding: 0px;
+  box-sizing: border-box;
+  margin: 0px;
+}
+
 :root {
     --color-institucional: #ff8e0a;
     --color-neutral1: #838486;
