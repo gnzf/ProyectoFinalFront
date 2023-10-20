@@ -1,23 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import InicioDeSesion from './pages/inicioDeSesion'
+import React from "react";
+import * as ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import InicioDeApp from "./pages/iniciodeapp";
+// import Carrusel from "./components/cupidomusical/Carrusel";
+import Perfil from "./pages/perfil";
+// import Configuration from "./components/perfil/Configuration";
 
 const router = createBrowserRouter([
   {
     path: "/home",
-    element: <Home/>
+    element: <Perfil />,
   },
-  {
-    path: "/login",
-    element: <InicioDeSesion/>
-  },
+]);
 
-  
-])
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider  router={router} />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
