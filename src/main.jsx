@@ -1,7 +1,11 @@
 import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import ReactDOM from "react-dom/client";
+import * as ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
+// import InicioDeApp from "./pages/iniciodeapp";
+// import Carrusel from "./components/cupidomusical/Carrusel";
+// import Perfil from "./pages/perfil";
+// import Configuration from "./components/perfil/Configuration";
 import Registro from "./pages/registro";
 import Home from "./pages/home";
 import RegistoCrearCuenta from "./pages/RegistoCrearCuenta";
@@ -32,7 +36,7 @@ const router = createBrowserRouter([
   
 ])
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
