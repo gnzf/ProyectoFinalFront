@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import InicioDeSesion from './pages/inicioDeSesion'
+import InicioDeSesion from './pages/InicioDeSesion'
 
 const router = createBrowserRouter([
   {
@@ -11,6 +11,18 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <InicioDeSesion/>
+  },
+  {
+    path: "/recuperar-cuenta",
+    element: <RecuperarCuenta/>
+  },
+  {
+    path: "/buscador",
+    element: <Buscador/>
+  },
+  {
+    path: "/busquedaReciente",
+    element: <BusquedaReciente/>
   },
 
   

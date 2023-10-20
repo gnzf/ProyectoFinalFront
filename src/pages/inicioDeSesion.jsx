@@ -1,32 +1,89 @@
-import React from 'react'
-import { useState } from 'react'
-import "./formulario.css"
-import { useNavigate } from 'react-router-dom'
-import {registrarUsuario} from "../API/rule_auth"
+import React from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/InicioDeSesion/InicioDeSesion.css";
+import TitleArrow from "../components/iniciodesesion/TitleArrow";
+import {
+  FieldsetEmailUser,
+  FieldSetPassword,
+} from "../components/iniciodesesion/Fieldsets";
+import Button from "../components/iniciodesesion/Button";
 
 function InicioDeSesion() {
-  const [inputPassword, setInputPassword] = useState("");
-  const [names , setNames] = useState("");
-  const [email , setEmail] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errorPassword, setErrorPassword] = useState(false);
-  const [errorEmail, setErrorEmail] = useState(false);
+  const [errorInput, setErrorInput] = useState(false);
+  const [bothFieldsFilled, setBothFieldsFilled] = useState(false);
+
+  const [spinnerImage, setSpinnerImage] = useState("/icons/step=1.svg");
+  const [spinnerClass, setSpinnerClass] = useState([
+    "spinner-custom",
+    "spinner1",
+  ]);
+  const [showSpinner, setShowSpinner] = useState(false);
+
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  const spinnerImages = [
+    { src: "../../public/images/Inicio De Sesión/step=1.svg", className: "spinner-custom spinner1" },
+    { src: "../../public/images/Inicio De Sesión/step=4.svg", className: "spinner-custom spinner4" },
+    { src: "../../public/images/Inicio De Sesión/step=2.svg", className: "spinner-custom spinner3" },
+    { src: "../../public/images/Inicio De Sesión/step=3.svg", className: "spinner-custom spinner2" },
+  ];
+
   const navigate = useNavigate();
 
+  const handleChangeInput = (event) => {
+    setInputValue(event.target.value);
 
-  const [inputPasswordError, setInputPasswordError] = useState(false);
-
-  const handleChangePassword = (event) => {
-        setInputPassword(event.target.value); 
-      if (event.target.value.length < 8) {
-        setInputPasswordError(true);
-      } else {
-        setInputPasswordError(false);
-      }
+    if (/^\S+@\S+\.\S+$/.test(event.target.value)) {
+      setEmail(inputValue);
+      setUserName("");
+    } else {
+      setUserName(inputValue);
+      setEmail("");
+    }
+    handleFieldsFilled();
   };
 
- 
+  const handleChangePassword = (event) => {
+    setPassword(event.target.value);
+    handleFieldsFilled();
+  };
 
-  const handleSubmit = async (event) => {
+  const handleFieldsFilled = () => {
+    if (inputValue.length > 0 && password.length > 0) {
+      setBothFieldsFilled(true);
+    }
+  };
+
+  const handleClickRecuperarCuenta = () => {
+    navigate("/recuperar-cuenta");
+  };
+
+  const handleChangeSpinnerImage = () => {
+    setShowSpinner(true);
+    setShowOverlay(true);
+
+    setTimeout(() => {
+      const currentIndex = spinnerImages.findIndex(
+        (spinner) => spinner.scr === spinnerImage
+      );
+
+      const nextIndex = (currentIndex + 1) % spinnerImages.length;
+
+      setSpinnerImage(spinnerImages[nextIndex].src);
+      setSpinnerClass(spinnerImage[nextIndex].className);
+      setTimeout(() => {
+        setShowSpinner(false);
+      }, 1000);
+    }, 2000);
+  };
+
+  /* const handleSubmit = async (event) => {
         event.preventDefault();
         if (inputPassword.length > 8) {
           await registrarUsuario({ email: email, password: inputPassword })
@@ -40,29 +97,39 @@ function InicioDeSesion() {
         } else {
           alert("Las credenciales no son correctas"); //esto se manda a un servidor para corroborar las credenciales
         }
-  }
+  } */
 
   return (
-    <div className="form-container">
-      <form className='form' onSubmit={handleSubmit}>
-        <h1>Registrarse</h1>
-        
-        <input type='email' placeholder='Correo *' value={email} onChange={(event) =>{ setEmail(event.target.value)}}></input>
-
-        <input 
-          className={errorPassword ?  'error' : ""}
-          requiered=""
-          type='password'
-          value={inputPassword}
-          onChange={handleChangePassword}
-          placeholder='Contraseña *'
+    <div className="login-container">
+      {showOverlay && <div className="overlay-custom" />}
+      <form className="form-login-wrapper" /* onSubmit={handleSubmit} */>
+        <TitleArrow title="Iniciar Sesión" />
+        <FieldsetEmailUser value={inputValue} onChange={handleChangeInput} />
+        <FieldSetPassword
+          labelPasswordLi="Contraseña: "
+          classNameInput={errorPassword ? "error" : ""}
+          valuePsw={password}
+          onChangePsw={handleChangePassword}
         />
-        {inputPasswordError && (<p style={{ color: "red" }}>La contraseña debe tener 8 caracteres mínimo</p>)}
-
-        <button type="submit">Registrarse ahora</button>
+        <Button
+          classNameBtn="btn-login"
+          fieldsFilled={bothFieldsFilled}
+          onClick={handleChangeSpinnerImage}
+          btnLabel="Iniciar Sesión"
+        />
+        {showSpinner && (
+          <div className="spinner-container">
+            <img
+              src={spinnerImage}
+              alt="spinner"
+              className={`spinner-login ${spinnerClass}`}
+            />
+          </div>
+        )}
+        <p onClick={handleClickRecuperarCuenta}>¿Olvidaste tu contraseña?</p>
       </form>
     </div>
-  )
+  );
 }
 
-export default InicioDeSesion
+export default InicioDeSesion;

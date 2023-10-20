@@ -1,19 +1,39 @@
 :root {
-    --color-institucional: #ff8e0a;
-    --color-neutral1: #838486;
-    --color-neutral2: #26262E;
-    --color-neutral3: #45464B;
-    --color-neutral4: #838486;
-    --color-neutral5: #BFC0C1;
-    --color-neutral6: #E4E6E8;
-    --color-neutral7: #FDFEFF;
-    --color-semantico1: #EA0F0F;
-    --color-semantico2: #03A400;
-    --color-mododia1: #FDFEFF;
-    --color-mododia2: #26262E;
-    --color-mododia3: #FF8E0A;
-    --color-modonoche1: #080811;
-    --color-modonoche2: #E4E6E8;
-    --color-modonoche3: #FF8E0A;
-  }
-  
+  --color-institucional: #ff8e0a;
+  --color-neutral1: #838486;
+  --color-neutral2: #26262e;
+  --color-neutral3: #45464b;
+  --color-neutral4: #838486;
+  --color-neutral5: #bfc0c1;
+  --color-neutral6: #e4e6e8;
+  --color-neutral7: #fdfeff;
+  --color-semantico1: #ea0f0f;
+  --color-semantico2: #03a400;
+  --color-mododia1: #fdfeff;
+  --color-mododia2: #26262e;
+  --color-mododia3: #ff8e0a;
+  --color-modonoche1: #080811;
+  --color-modonoche2: #e4e6e8;
+  --color-modonoche3: #ff8e0a;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 368px;
+  height: 100vh;
+}
+
+.overlay-custom{              
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 3;
+  background-color: rgba(0,0,0,0.5);
+}
