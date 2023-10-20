@@ -1,0 +1,25 @@
+.button-continuar {
+    display: flex;
+    align-self: flex-start;
+    width: 100%;
+    padding: 12px 16px;
+    justify-content: center;
+    align-self: flex-end; /* Tengo que mandar el button abajo del todo */
+    gap: 12px;
+    border-radius: 0px 16px;
+    background: var(--medios-tonos-gris-1, #E4E6E8);
+    border: none;
+    margin:30px 0 10px 0 ;
+}
+
+.continuar {
+    color: var(--Blanco, #FDFEFF);
+    text-align: center;
+    /* Headings/Heading 5 - 16px/Medium */
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.5px;
+}

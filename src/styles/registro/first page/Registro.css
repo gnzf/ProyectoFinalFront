@@ -1,0 +1,53 @@
+.registro-container {
+    
+    width: 100vw;
+    height: 100vh;
+    padding: 24px 24px 24px 30px;
+    background: linear-gradient(
+        0deg,
+        #fff 90%,
+        rgba(253, 254, 255, 0) 50%,
+        rgba(255, 142, 10, 0.534586) 100%,
+        rgba(255, 142, 10, 0.9) 100%
+      );
+   
+}
+
+.titulo {
+    width: 320px;
+    color: var(--medios-tonos-gris-5, #26262E);
+    text-align: center;
+    /*  Headings/Heading 3 - 26px/Medium */
+    font-family: Rubik;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px; /* 138.462% */
+    letter-spacing: 0.5px;
+    margin: 20px 0px 20px 0px;
+}
+
+.correo-electronico {
+    display: flex;
+    width: 320px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: Rubik;
+    font-weight: 500;
+    font-size: 19px;
+}
+
+.aclaracion {
+    align-self: stretch;
+    color: var(--medios-tonos-gris-3, #838486);
+    /*  Body/Body Very Small - 12px/Medium */
+    font-family: Rubik;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px; /* 150% */
+    letter-spacing: 0.5px;
+
+}
+

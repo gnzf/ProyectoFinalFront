@@ -1,0 +1,103 @@
+.container-profile {
+  font-family: Rubik;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+    0deg,
+    rgba(253, 254, 255, 0) 92%,
+    rgba(102, 149, 175, 0.5346) 100%,
+    rgba(102, 149, 175, 0.9) 100%
+  );
+}
+
+.contenido-profile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.img-profile {
+  margin-top: 30px;
+  width: 152px;
+  height: 152px;
+}
+
+.btn-config-profile {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+}
+.name-users {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name-profile {
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 36px;
+  letter-spacing: 0.5px;
+  margin-bottom: 0;
+  color: #26262e;
+}
+
+.nickname {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.5px;
+  color: #26262e;
+}
+
+.playlist-wrapper {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 130px;
+}
+
+/* .seprator {
+  color: #26262e;
+  border: 2px solid #26262e;
+} */
+
+.title-playlists {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+}
+
+.btn-playlists {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  border-radius: 1px 10px;
+  border: none;
+  width: 100px;
+  height: 26px;
+  background-color: #ff8e0a;
+  color: #fdfeff;
+  cursor: pointer;
+}
+
+.playlist-section {
+  margin-top: 20px;
+  display: grid;
+  flex: 1 1;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
+  width: 100%;
+  padding: 0 40px;
+  overflow: auto;
+}
