@@ -1,0 +1,42 @@
+.encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    height: 40px;
+    padding-right: 0px;
+    align-items: center;
+    flex-shrink: 0;
+    font-family: Rubik;
+    margin: 14px 24px 24px 0px;
+} 
+
+.crear-cuenta-container {
+    display: flex;
+width: 272px;
+height: 40px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+}
+.crear-cuenta {
+    height: 24px;
+    margin-right: 20px;
+    flex-shrink: 0;
+    align-self: stretch;
+    overflow: hidden;
+    color: var(--medios-tonos-gris-5, #26262E);
+    text-align: center;
+    text-overflow: ellipsis;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.5px;
+    font-family: Rubik ;
+}
+ 
+
+

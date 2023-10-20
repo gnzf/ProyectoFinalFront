@@ -1,3 +1,9 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
 :root {
   --color-institucional: #ff8e0a;
   --color-neutral1: #838486;
@@ -17,8 +23,3 @@
   --color-modonoche3: #ff8e0a;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
