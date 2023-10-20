@@ -18,4 +18,4 @@ function BusquedaReciente() {
   )
 }
 
-export default BusquedaReciente
+export default BusquedaReciente;

@@ -12,6 +12,9 @@ import Home from "./pages/home";
 import RegistoCrearCuenta from "./pages/RegistoCrearCuenta";
 import MusicaContextual from './pages/musicaContextual'
 import PlaylistGenerada from './pages/PlaylistGenerada'
+import RecuperarCuenta from './pages/RecuperarCuenta';
+import Buscador from './pages/Buscador'
+import BusquedaReciente from './components/Buscador/BusquedaReciente'
 
 const router = createBrowserRouter([
   {
@@ -61,6 +64,10 @@ const router = createBrowserRouter([
   {
     path: "/busquedaReciente",
     element: <BusquedaReciente/>
+  },
+  {
+    path: "/login",
+    element: <InicioDeSesion/>
   }
 
 ])
