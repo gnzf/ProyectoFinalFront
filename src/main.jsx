@@ -1,7 +1,8 @@
-import React from "react";
-import * as ReactDOM from "react-dom/client";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import './index.css'
+import InicioDeSesion from './pages/InicioDeSesion'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
 import InicioDeApp from "./pages/iniciodeapp";
 import Carrusel from "./components/cupidomusical/Carrusel";
 import PerfilUsuario from "./pages/perfil";
@@ -49,7 +50,19 @@ const router = createBrowserRouter([
     path: "/configuracionPerfil",
     element: <Configuration/>
   },
-  
+  {
+    path: "/recuperar-cuenta",
+    element: <RecuperarCuenta/>
+  },
+  {
+    path: "/buscador",
+    element: <Buscador/>
+  },
+  {
+    path: "/busquedaReciente",
+    element: <BusquedaReciente/>
+  }
+
 ])
 
 ReactDOM.createRoot(document.getElementById("root")).render(
