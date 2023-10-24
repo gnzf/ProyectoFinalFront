@@ -16,25 +16,20 @@ function SearchBar({
   const [isArrowVisible, setIsArrowVisible] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [arrowChanged, setArrowChanged] = useState(false);
-
+  const [letra, setLetra] = useState("")
+  
+  
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
     onSearch(event.target.value)
   };
-
-  /*  const handleInputClick = () => {
-    onClickInput();
-    if (!isClicked) {
-      setIsArrowVisible(true);
-    }
-    setIsArrowVisible(!isArrowVisible);
-  }; */
 
   const handleInputClick = () => {
     onClickInput();
     if (!arrowChanged) {
       setIsArrowVisible(!isArrowVisible);
       setArrowChanged(true);
+      onClickInput(letra);
       /*       setArrowClicked(true); */
     }
   };
@@ -70,6 +65,7 @@ function SearchBar({
       <input
         type="text"
         value={searchTerm}
+        value={letra}
         placeholder="¿Qué deseas escuchar?"
         onChange={handleSearch}
         onClick={handleInputClick}
@@ -82,6 +78,10 @@ function SearchBar({
           alt="cruz-borrar"
         />
       )}
+        onChange={(e) => setLetra(e.target.value)}
+      /> 
+
+      {/*   <img src="" alt="cruz-borrar" /> */}
     </div>
   );
 }

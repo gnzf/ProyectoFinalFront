@@ -84,6 +84,8 @@
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
+  height: 61vh;
+  overflow: auto;
 }
 
 /*****/

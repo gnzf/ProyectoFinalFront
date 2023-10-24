@@ -1,13 +1,34 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import "../styles/musicaContextual/musicaContextual.css"
 import backArrow from "../../public/images/home/leftarrowback.svg"
 import GenerosMC from '../components/musicaContextual/generosMC';
 import Select from '../components/Select';
+import { getCanciones, getGeneros } from "../API/rule_canciones";
 
 function MusicaContextual() {
     const [ocasion, setOcasion] = useState('');
     const [sentimiento, setSentimiento] = useState('');
+    const [resultados, setResultados] = useState([]);
     const [clima, setClima] = useState('');
+    const [letra, setLetra] = useState("");
+    
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const resultado = await getGeneros();
+            setResultados(resultado);
+          } catch (error) {
+            alert("Error al obtener los datos.");
+          }
+        };
+    
+        fetchData();
+      }, []);
+
+      const filteredResultados = resultados.filter((generos) =>
+        generos.genre_name.toLowerCase().includes(letra.toLowerCase())
+  );
 
 
   return (
@@ -61,8 +82,12 @@ function MusicaContextual() {
             
             </div>
             <h2>Selecciona hasta 3 géneros:</h2>
-            <div>
-                <div><GenerosMC/></div>
+            <div className='container-generos-generate'>
+                {filteredResultados.map((generos) => (
+                  <GenerosMC
+                    generoName={generos.genre_name}
+                  />
+                ))}
             </div>
             <div className='crear-playlist-musicaContextual'>
                 <p>Crear Playlist</p>

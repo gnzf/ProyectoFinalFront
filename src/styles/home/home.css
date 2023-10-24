@@ -1,6 +1,6 @@
 .all-home-stats{
-    width: 390px;
-    height: 792px;
+    width: 100vw;
+    height: 100vh;
     font-family: Rubik, sans-serif;
 }
 
@@ -27,7 +27,7 @@
 .container-main-home{
     display: flex;
     flex-direction: column;
-    height: 75vh;
+    height: 72vh;
     padding: 0 1.5rem;
 }
 

@@ -43,3 +43,8 @@
     margin-bottom: 1rem;
 }
 
+.container-generos-generate{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

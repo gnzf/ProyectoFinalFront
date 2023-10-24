@@ -14,6 +14,7 @@ import MusicaContextual from './pages/musicaContextual'
 import PlaylistGenerada from './pages/PlaylistGenerada'
 import RecuperarCuenta from './pages/RecuperarCuenta';
 import Buscador from './pages/Buscador';
+import BusquedaReciente from './components/Buscador/BusquedaReciente'
 
 const router = createBrowserRouter([
   {
