@@ -2,17 +2,17 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/InicioDeSesion/RecuperarCuenta.css";
-import planeSendReset from "../../public/images/Inicio De Sesión/paper-plane.svg";
-import TitleArrow from "../components/iniciodesesion/TitleArrow";
-import {FieldsetEmailUser} from "../components/iniciodesesion/Fieldsets";
-import Button from "../components/iniciodesesion/Button";
+import planeSendReset from "../../public/images/InicioDeSesión/paper-plane.svg";
+import TitleArrow from "../components/InicioDeSesion/TitleArrow";
+import {FieldsetEmailUser} from "../components/InicioDeSesion/Fieldsets";
+import Button from "../components/InicioDeSesion/Button";
 
 function RecuperarCuenta() {
   const [accountReset, setAccountReset] = useState("");
   const [errorAccountReset, setErrorAccountReset] = useState(false);
   const [fieldFilled, setFieldFilled] = useState(false);
 
-  const [spinnerImage, setSpinnerImage] = useState("/icons/step=1.svg");
+  const [spinnerImage, setSpinnerImage] = useState("/images/InicioDeSesión/step=1.svg");
   const [spinnerClass, setSpinnerClass] = useState([
     "spinner-custom",
     "spinner1",
@@ -22,14 +22,15 @@ function RecuperarCuenta() {
   const [showPopup, setShowPopUp] = useState(false);
 
   const spinnerImages = [
-    { src: "/icons/step=1.svg", className: "spinner-custom spinner1" },
-    { src: "/icons/step=3.svg", className: "spinner-custom spinner2" },
-    { src: "/icons/step=2.svg", className: "spinner-custom spinner3" },
-    { src: "/icons/step=4.svg", className: "spinner-custom spinner4" },
+    { src: "/images/InicioDeSesión/step=1.svg", className: "spinner-custom spinner1" },
+    { src: "/images/InicioDeSesión/step=3.svg", className: "spinner-custom spinner2" },
+    { src: "/images/InicioDeSesión/step=2.svg", className: "spinner-custom spinner3" },
+    { src: "/images/InicioDeSesión/step=4.svg", className: "spinner-custom spinner4" },
   ];
 
   const handleChangeSpinnerImage = (event) => {
     event.preventDefault();
+
     setShowSpinner(true);
     setShowOverlay(true);
 
@@ -41,7 +42,8 @@ function RecuperarCuenta() {
       const nextIndex = (currentIndex + 1) % spinnerImages.length;
 
       setSpinnerImage(spinnerImages[nextIndex].src);
-      setSpinnerClass(spinnerImage[nextIndex].className);
+      setSpinnerClass(spinnerImages[nextIndex].className);
+
       setTimeout(() => {
         setShowSpinner(false);
         setShowPopUp(true);
@@ -82,7 +84,7 @@ function RecuperarCuenta() {
           <span style={{ color: "red" }}>Campo requerido</span>
         )}
         <Button
-          className="btn-reset-account "
+          className="btn-reset-account"
           fieldsFilled={fieldFilled}
           onClick={handleChangeSpinnerImage}
           btnLabel="Continuar"

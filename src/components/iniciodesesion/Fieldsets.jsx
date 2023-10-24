@@ -1,14 +1,14 @@
 import React from 'react'
 import { useState } from 'react';
 import "../../styles/InicioDeSesion/FieldSets.css"
-import eyeClosed from "../../../public/images/Inicio De Sesión/state=closed.svg";
-import eyeOpen from "../../../public/images/Inicio De Sesión/state=open.svg";
+import eyeClosed from "../../../public/images/InicioDeSesión/state=closed.svg";
+import eyeOpen from "../../../public/images/InicioDeSesión/state=open.svg";
 
 function FieldsetEmailUser(props) {
   return (
     <div className="fieldset-container-custom">
         <label htmlFor="">Nombre de Usuario o E-mail:</label>
-        <input type="text" value={props.value} onChange={props.onChange}/>
+        <input className="input-user" type="text" value={props.value} onChange={props.onChange}/>
         {props.children}
     </div>
 
@@ -17,9 +17,11 @@ function FieldsetEmailUser(props) {
 
 function FieldSetPassword(props) {
     const [showPassword, setShowPassword] = useState(false);
+
     const passwordVisibility = () => {
         setShowPassword(!showPassword);
       };
+      
     return (
         <div className="fieldset-container-custom">
             <label htmlFor="">{props.labelPasswordLi}</label>

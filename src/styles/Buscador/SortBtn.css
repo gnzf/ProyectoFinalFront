@@ -1,0 +1,26 @@
+button{
+  display: flex;
+  height: 36px;
+  padding: 6px 8px;
+  /*   justify-content: center;
+    align-items: center; */
+  border-radius: 0px 12px;
+  text-align: center;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 150% */
+  letter-spacing: 0.5px;
+}
+
+.first-sort {
+  border: 1.5px solid var(--Primario, #ff8e0a);
+  background: var(--Primario, #ff8e0a);
+  color: var(--Blanco, #fdfeff);
+}
+
+.sort-search-btn {
+    border: 1.5px solid var(--medios-tonos-gris-5, #26262e);
+    background-color: #fdfeff;
+    color: var(--medios-tonos-gris-5, #26262E);
+}

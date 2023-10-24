@@ -1,0 +1,60 @@
+.busqueda-results-wrapper {
+    margin-top: -78px;
+  }
+
+  .sort-cards-container {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-family: Rubik;
+    margin-top: 24px;
+    margin-left: 24px;
+  }
+
+  .suggested-result {
+    display: flex;
+  width: 320px;
+  flex-direction: column;
+  /* align-items: flex-start; */
+  gap: 12px;
+  justify-content: center;
+  margin-right: 24px;
+  /* margin-left: 24px; */
+  }
+
+  .suggested-result p.sugerencia-title {
+    overflow: hidden;
+  color: var(--medios-tonos-gris-3, #838486);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* font-family: Rubik; */
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 21px; /* 150% */
+  letter-spacing: 0.5px;
+  margin-left: 24px;
+  margin-top: 16px;
+  }
+
+  .suggested-result hr {
+    width: 100%;
+    margin-left: 24px;
+  background: #E4E6E8;
+  }
+
+  .search-results-container {
+    display: inline-flex;
+  padding-bottom: 0px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+  /* margin-left: 24px; */
+  }
+
+  .search-cards-wrapper{
+    display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  }
