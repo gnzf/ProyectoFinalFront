@@ -1,5 +1,5 @@
 import "../../styles/perfil/perfil.css";
-import FooterHome from "../home/FooterHome";
+import FooterHome from "../home/footerHome";
 import Playlists from "../playlists/Playlists";
 
 function perfil() {
@@ -51,8 +51,8 @@ function perfil() {
             nameUsers="LuciVaz, mara_pg"
           />
         </div>
-        <FooterHome />
       </div>
+        <FooterHome/>
     </>
   );
 }

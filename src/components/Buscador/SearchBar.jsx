@@ -6,8 +6,9 @@ import "../../styles/Buscador/Buscador.css";
 
 function SearchBar({ onClickInput, isClicked }) {
   const [isArrowVisible, setIsArrowVisible] = useState(false);
+  const [letra, setLetra] = useState("")
   const handleInputClick = () => {
-    onClickInput();
+    onClickInput(letra);
     setIsArrowVisible(!isArrowVisible);
   };
 
@@ -30,8 +31,10 @@ function SearchBar({ onClickInput, isClicked }) {
       )}
       <input
         type="text"
+        value={letra}
         placeholder="¿Qué deseas escuchar?"
         onClick={handleInputClick}
+        onChange={(e) => setLetra(e.target.value)}
       /> 
 
       {/*   <img src="" alt="cruz-borrar" /> */}

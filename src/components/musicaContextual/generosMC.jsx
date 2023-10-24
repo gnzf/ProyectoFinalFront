@@ -1,32 +1,14 @@
 import React from 'react'
 import "./generosMC.css"
 
-function GenerosMC() {
+function GenerosMC(props) {
+
+    
+
   return (
     <div>
         <div className='container-generosmc'>
-            <button>Rock</button>
-            <button>Rock</button>
-            <button>Rock</button>
-            <button>Rock</button>
-        </div>
-        <div className='container-generosmc'>
-            <button>Rock</button>
-            <button>Rock</button>
-            <button>Rock</button>
-            <button>Rock</button>
-        </div>
-        <div className='container-generosmc'>
-            <button>Rock</button>
-            <button>Rock</button>
-            <button>Rock</button>
-            <button>Rock</button>
-        </div>
-        <div className='container-generosmc'>
-            <button>Rock</button>
-            <button>Rock</button>
-            <button>Rock</button>
-            <button>Rock</button>
+            <button>{props.generoName}</button>
         </div>
     </div>
   )
