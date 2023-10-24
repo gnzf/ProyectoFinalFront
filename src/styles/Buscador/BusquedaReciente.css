@@ -1,0 +1,40 @@
+.recent-search-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    top: -64px;
+  }
+
+  .recent-search-wrapper span {
+    color: var(--medios-tonos-gris-5, #26262e);
+    width: 181px;
+    font-family: Rubik;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 150% */
+    letter-spacing: 0.5px;
+    margin-left: 24px;
+  }
+
+  .busquedas-recientes-cards-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: -39px;
+    /* margin-left: 24px; */
+  }
+
+  .clear-recent-search-history {
+    color: var(--medios-tonos-gris-2, #bfc0c1);
+    text-align: center;
+    font-family: Rubik;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px; /* 150% */
+    letter-spacing: 0.5px;
+    margin-top: 36px;
+  }

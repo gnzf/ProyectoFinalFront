@@ -1,0 +1,13 @@
+.breadcrumb-busqueda-reciente {
+    display: flex;
+    list-style: none;
+  }
+
+  .breadcrumb-busqueda-reciente ul li {
+    display: inline;
+  }
+
+  .breadcrumb-busqueda-reciente li + li:before {
+    padding: 8px;
+    content: "|\00a0";
+  }

@@ -1,5 +1,5 @@
 import React from "react";
-import leftArrow from "../../../public/images/Inicio De Sesión/position=left.svg"
+import leftArrow from "../../../public/images/InicioDeSesión/position=left.svg"
 import "../../styles/InicioDeSesion/TitleArrow.css"
 
 function TitleArrow(props) {

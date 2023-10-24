@@ -2,12 +2,12 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/InicioDeSesion/InicioDeSesion.css";
-import TitleArrow from "../components/iniciodesesion/TitleArrow";
+import TitleArrow from "../components/InicioDeSesion/TitleArrow";
 import {
   FieldsetEmailUser,
   FieldSetPassword,
-} from "../components/iniciodesesion/Fieldsets";
-import Button from "../components/iniciodesesion/Button";
+} from "../components/InicioDeSesion/Fieldsets";
+import Button from "../components/InicioDeSesion/Button";
 
 function InicioDeSesion() {
   const [inputValue, setInputValue] = useState("");
@@ -18,7 +18,7 @@ function InicioDeSesion() {
   const [errorInput, setErrorInput] = useState(false);
   const [bothFieldsFilled, setBothFieldsFilled] = useState(false);
 
-  const [spinnerImage, setSpinnerImage] = useState("/icons/step=1.svg");
+  const [spinnerImage, setSpinnerImage] = useState("../../public/images/InicioDeSesión/step=1.svg");
   const [spinnerClass, setSpinnerClass] = useState([
     "spinner-custom",
     "spinner1",
@@ -28,10 +28,22 @@ function InicioDeSesion() {
   const [showOverlay, setShowOverlay] = useState(false);
 
   const spinnerImages = [
-    { src: "../../public/images/Inicio De Sesión/step=1.svg", className: "spinner-custom spinner1" },
-    { src: "../../public/images/Inicio De Sesión/step=4.svg", className: "spinner-custom spinner4" },
-    { src: "../../public/images/Inicio De Sesión/step=2.svg", className: "spinner-custom spinner3" },
-    { src: "../../public/images/Inicio De Sesión/step=3.svg", className: "spinner-custom spinner2" },
+    {
+      src: "../../public/images/InicioDeSesión/step=1.svg",
+      className: "spinner-custom spinner1",
+    },
+    {
+      src: "../../public/images/InicioDeSesión/step=4.svg",
+      className: "spinner-custom spinner4",
+    },
+    {
+      src: "../../public/images/InicioDeSesión/step=2.svg",
+      className: "spinner-custom spinner3",
+    },
+    {
+      src: "../../public/images/InicioDeSesión/step=3.svg",
+      className: "spinner-custom spinner2",
+    },
   ];
 
   const navigate = useNavigate();
@@ -70,13 +82,13 @@ function InicioDeSesion() {
 
     setTimeout(() => {
       const currentIndex = spinnerImages.findIndex(
-        (spinner) => spinner.scr === spinnerImage
+        (spinner) => spinner.src === spinnerImage
       );
 
       const nextIndex = (currentIndex + 1) % spinnerImages.length;
 
       setSpinnerImage(spinnerImages[nextIndex].src);
-      setSpinnerClass(spinnerImage[nextIndex].className);
+      setSpinnerClass(spinnerImages[nextIndex].className);
       setTimeout(() => {
         setShowSpinner(false);
       }, 1000);
