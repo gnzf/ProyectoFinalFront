@@ -126,7 +126,7 @@ function Buscador() {
       </div>
 
       <FooterHome />
-    </div>
+    </>
   );
 }
      

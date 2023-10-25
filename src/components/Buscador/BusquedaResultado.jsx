@@ -34,37 +34,6 @@ function BusquedaResultado() {
           type="Álbum"
           artistName="Panic! At The Disco"
         />
-        <CardBusqueda
-          imgCardAlbum={caravan}
-          name="Panic"
-          type="Álbum"
-          artistName="Caravan Palace"
-        />
-        <CardBusqueda
-          imgCardAlbum={bachelor}
-          name="Death of a Bachelor"
-          type="Álbum"
-          artistName="Panic! At The Disco"
-        />
-        <CardBusqueda
-          imgCardAlbum={panicRoom}
-          name="Panic Room"
-          type="Canción"
-          artistName="Au/Ra"
-        />
-        <CardBusqueda
-          imgCardAlbum={roaring}
-          name="Roaring 20s"
-          type="Canción"
-          artistName="Panic! At the Disco"
-        />
-        <CardArtista imgCardArtista={Panico} artistName="Pánico" />
-        <CardBusqueda
-          imgCardAlbum={station}
-          name="Panic Station"
-          type="Canción"
-          artistName="Muse"
-        />
         </div>
       </div>
     </div>

@@ -10,6 +10,9 @@ function FieldsetEmailUser(props) {
         <label htmlFor="">Nombre de Usuario o E-mail:</label>
         <input className="input-user" type="text" value={props.value} onChange={props.onChange}/>
         {props.children}
+        {props.errorInput && (
+            <span style={{ color: "#EA0F0F" }}>Este campo es obligatorio.</span>
+          )}
     </div>
 
   )
@@ -29,6 +32,12 @@ function FieldSetPassword(props) {
                 <input className={props.classNameInput} type={showPassword ? "text" : "password"} requiered="" value={props.valuePsw} onChange={props.onChangePsw} />
                 <img className="eye-icon" src={showPassword ? eyeOpen : eyeClosed} alt="Mostrar contraseña" onClick={passwordVisibility} />
             </div>
+            {props.errorPassword && 
+            <span style={{ color: "#EA0F0F" }}>
+              Debe contener al menos 8 caracteres. 
+            </span>
+          }
+          
         </div>
     )
 }
