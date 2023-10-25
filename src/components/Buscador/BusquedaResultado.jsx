@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import SortBtn from "./SortBtn";
 import CardArtista from "./CardArtista";
 import PanicDisco from "../../../public/images/Buscador/image-placeholder (9).svg";
@@ -10,9 +10,39 @@ import roaring from "../../../public/images/Buscador/image-placeholder (14).svg"
 import Panico from "../../../public/images/Buscador/image-placeholder (15).svg";
 import station from "../../../public/images/Buscador/image-placeholder (16).svg";
 import "../../styles/Buscador/BusquedaResultado.css"
-import CardBusqueda from "./CardBusqueda";
+import { getCanciones } from "../../API/rule_canciones";
 
-function BusquedaResultado() {
+
+function BusquedaResultado(props) {
+  const [resultados, setResultados] = useState([]);
+  const [letra, setLetra] = useState("");
+  const [buscar, setBuscar] = useState(false)
+
+  const handleSearch = (letra) => {
+    setLetra(letra);
+    setBuscar(true);
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const resultado = await getCanciones();
+        setResultados(resultado);
+      } catch (error) {
+        alert("Error al obtener los datos.");
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
+  const filteredResultados = resultados.filter((cancion) =>
+    cancion.cancion_name.toLowerCase().includes(letra.toLowerCase()) ||
+    cancion.name_artist.toLowerCase().includes(letra.toLowerCase())
+  );
+
+
   return (
     <div className="busqueda-results-wrapper">
       <div className="sort-cards-container">
@@ -25,16 +55,6 @@ function BusquedaResultado() {
         artistName="Panic! At the Disco"
       />
       <hr />
-      </div>
-      <div className="search-results-container">
-        <div className="search-cards-wrapper">
-        <CardBusqueda
-          imgCardAlbum={vengeance}
-          name="Viva Las Vengeance"
-          type="Álbum"
-          artistName="Panic! At The Disco"
-        />
-        </div>
       </div>
     </div>
   );

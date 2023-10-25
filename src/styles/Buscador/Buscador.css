@@ -96,8 +96,8 @@
   width: 320px;
   height: 48px;
   gap: 12px;
-  margin-left: 24px;
-  margin-right: 24px;
+  margin: 5px 24px;
+  overflow: auto;
 }
 
 .busqueda-reciente-albumImg {
