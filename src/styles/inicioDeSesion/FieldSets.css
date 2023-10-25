@@ -98,3 +98,16 @@
   cursor: pointer;
   margin-top: 10px;
 }
+
+.error {
+  border-color: #ea0f0f;
+}
+
+.fieldset-container-custom span {
+  font-family: Rubik;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px; /* 150% */
+  letter-spacing: 0.5px;
+}

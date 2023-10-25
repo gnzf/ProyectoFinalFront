@@ -69,6 +69,10 @@ p {
   gap: 24px;
 }
 
+.error {
+  border-color: #EA0F0F;
+}
+
 .spinner1{
   animation-timing-function: ease-out;
 }

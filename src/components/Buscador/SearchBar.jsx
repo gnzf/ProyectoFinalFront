@@ -5,6 +5,7 @@ import leftArrow from "../../../public/images/Buscador/position=left.svg";
 import borrar from "../../../public/images/Buscador/icon-right-placeholder.svg";
 import "../../styles/Buscador/Buscador.css";
 import "../../styles/Buscador/Searchbar.css"
+
 function SearchBar({
   onClickInput,
   isClicked,
@@ -19,7 +20,7 @@ function SearchBar({
   
   
   const handleSearch = (event) => {
-    setLetra(event.target.value);
+    setLetra(event.target.value)
     onSearch(event.target.value)
   };
 
