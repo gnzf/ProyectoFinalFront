@@ -1,21 +1,41 @@
-import React from "react";
+import React, {useState} from "react";
 import Encabezado from "../components/registro/first page/Encabezado";
 import InputGeneral from "../components/registro/first page/InputGeneral";
 import "../styles/registro/first page/Registro.css";
 import ButtonContinuar from "../components/registro/first page/ButtonContinuar";
+import { useNavigate } from 'react-router-dom'
+
+
 
 function Registro() {
+  const [email , setEmail] = useState("");
+  const navigate = useNavigate();
+  
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    if( email !== ""){
+      localStorage.setItem("email", email)
+        navigate("/create-account");
+      
+      }else {
+        alert("Debe ingresar un email correcto")
+          
+        }
+
+  }
+
   return (
-    <>
-      <div className="registro-container">
+    <div className="registro-container">
+      <form onSubmit={handleSubmit}>
         <Encabezado encabezado="Crear Cuenta" />
         <div className="titulo">¿Cuál es tu correo electrónico?</div>
         <label className="correo-electronico"> Corre electrónico:</label>
-        <InputGeneral />
+        <InputGeneral value={email} onChange={(event) =>{ setEmail(event.target.value)}}/>
         <div className="aclaracion"> Deberás poder confirmarlo luego.</div>
         <ButtonContinuar></ButtonContinuar>
-      </div>
-    </>
+      </form>
+    </div>
   );
 }
 

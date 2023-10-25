@@ -14,13 +14,12 @@ function SearchBar({
   onSearch
 }) {
   const [isArrowVisible, setIsArrowVisible] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
   const [arrowChanged, setArrowChanged] = useState(false);
   const [letra, setLetra] = useState("")
   
   
   const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
+    setLetra(event.target.value);
     onSearch(event.target.value)
   };
 
@@ -35,7 +34,7 @@ function SearchBar({
   };
 
   const handleClearSearch = (event) => {
-    setSearchTerm("");
+    setLetra("");
   };
 
   return (
@@ -64,13 +63,12 @@ function SearchBar({
       )}
       <input
         type="text"
-        value={searchTerm}
         value={letra}
         placeholder="¿Qué deseas escuchar?"
         onChange={handleSearch}
         onClick={handleInputClick}
       />
-      {searchTerm.length > 0 && (
+      {letra.length > 0 && (
         <img
           className="cruz-borrar-buscador"
           src={borrar}
@@ -78,8 +76,6 @@ function SearchBar({
           alt="cruz-borrar"
         />
       )}
-        onChange={(e) => setLetra(e.target.value)}
-      /> 
 
       {/*   <img src="" alt="cruz-borrar" /> */}
     </div>

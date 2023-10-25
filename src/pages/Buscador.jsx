@@ -9,16 +9,19 @@ import BusquedaResultado from "../components/Buscador/BusquedaResultado";
 import { getCanciones } from "../API/rule_canciones";
 import AllSongs from "../components/playlistgenerada/AllSongs";
 import FooterHome from "../components/home/footerHome";
+import CardBusqueda from "../components/Buscador/CardBusqueda";
+import "../styles/Buscador/BusquedaResultado.css"
+import vengeance from "../../public/images/Buscador/image-placeholder (10).svg";
 
 function Buscador() {
   const [arrowClicked, setArrowClicked] = useState(false);
-  const [searchedTerm, setSearchedTerm] = useState("");
   const [isClicked, setIsClicked] = useState(false);
   const [resultados, setResultados] = useState([]);
   const [letra, setLetra] = useState("");
+  const [buscar, setBuscar] = useState(false)
 
 
-  const handleInputClick = (letra) => {
+  const handleInputClick = () => {
     setIsClicked(true);
   };
 
@@ -26,9 +29,9 @@ function Buscador() {
     setArrowClicked(true);
   };
 
-  const handleSearch = (value) => {
-    setSearchedTerm(value)
+  const handleSearch = (letra) => {
     setLetra(letra);
+    setBuscar(true);
   }
 
   useEffect(() => {
@@ -70,16 +73,6 @@ function Buscador() {
                 setArrowClicked={setArrowClicked}
                 onSearch={handleSearch}
               />
-              {isClicked ? (
-              <div>
-                {filteredResultados.map((canciones) => (
-                  <AllSongs
-                    title={canciones.cancion_name}
-                    artistName={canciones.name_artist}
-                  />
-                ))}
-              </div>
-            ) : null}
             </div>
           </div>
           <div
@@ -97,7 +90,7 @@ function Buscador() {
             />
           </div>
         </div>
-         {isClicked && searchedTerm == 0 ? (
+         {isClicked && letra == 0 ? (
           <div
             className={`recent-search animate-${
               arrowClicked ? "right-reverse" : "right"
@@ -106,10 +99,21 @@ function Buscador() {
             <BusquedaReciente />
           </div>
         ) : 
-        searchedTerm.length > 0 && (
+        letra.length > 0 && (
           <BusquedaResultado/>
         )}
-      </div>
+        </div>
+        {buscar ? (
+              <div>
+                {filteredResultados.map((canciones) => (
+                  <CardBusqueda
+                    imgCardAlbum={vengeance}
+                    title={canciones.cancion_name}
+                    artistName={canciones.name_artist}
+                  />
+                ))}
+              </div>
+            ) : null}
          <div className={`grillas ${isClicked ? "animate-left" : ""}`}>
           {filteredResultados.length > 0 ? (
         <div className="grillaAlbums">
@@ -126,7 +130,7 @@ function Buscador() {
       </div>
 
       <FooterHome />
-    </div>
+    </>
   );
 }
      

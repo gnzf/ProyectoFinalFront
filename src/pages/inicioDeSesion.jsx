@@ -8,6 +8,7 @@ import {
   FieldSetPassword,
 } from "../components/InicioDeSesion/Fieldsets";
 import Button from "../components/InicioDeSesion/Button";
+import {loginUsuario} from "../API/rule_auth"
 
 function InicioDeSesion() {
   const [inputValue, setInputValue] = useState("");

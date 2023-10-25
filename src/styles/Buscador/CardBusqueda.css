@@ -1,6 +1,7 @@
 .breadcrumb-busqueda-reciente {
     display: flex;
     list-style: none;
+    gap: 16px;
   }
 
   .breadcrumb-busqueda-reciente ul li {

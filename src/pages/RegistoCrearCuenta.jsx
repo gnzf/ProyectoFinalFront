@@ -1,22 +1,46 @@
-import React from "react";
+import React, {useState} from "react";
 import Encabezado from "../components/registro/first page/Encabezado";
 import "../styles/registro/second page/RegistroCrearCuenta.css";
 import ButtonContinuar from "../components/registro/first page/ButtonContinuar";
-import InputGeneral from "../components/registro/first page/InputGeneral";
+import { registrarUsuario } from "../API/rule_auth";
+import { useNavigate } from 'react-router-dom';
 
 function RegistoCrearCuenta() {
+  const userEmail = localStorage.getItem("email");
+  const [inputPassword, setInputPassword] = useState("");
+  const [inputUsername, setInputUsername] = useState("");
+  const navigate = useNavigate();
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (inputPassword.length > 8) {
+      await registrarUsuario({ email: userEmail, password: inputPassword , username: inputUsername})
+        .then((resultado) => {
+          alert(resultado.mensaje);
+          navigate("/home", { replace: true });
+        })
+        .catch((error) => {
+          alert(error);
+        });
+    } else {
+      alert("Las credenciales no son correctas"); //esto se manda a un servidor para corroborar las credenciales
+    }
+}
+  
+
   return (
     <>
-      <div className="registro-crear-cuenta-container">
+      <form onSubmit={handleSubmit} className="registro-crear-cuenta-container">
         <Encabezado encabezado="Crear Cuenta" />
         <div className="titulo">Ingrese un nombre de usuario y contraseña</div>
         <label className="nombre-de-usuario"> Nombre de Usuario:</label>
-        <InputGeneral />
+        <input className="input-general" type="text" value={inputUsername} onChange={(event) =>{ setInputUsername(event.target.value)}}/>
         <label className="password-label" type="password">
           Contraseña:
         </label>
         <div className="password-container">
-          <input type="password" className="password-input" />
+          <input type="password" value={inputPassword} onChange={(event) =>{ setInputPassword(event.target.value)}} className="password-input" />
           <button>
             <img
               src="/images/registro/state=closed.svg"
@@ -34,7 +58,7 @@ function RegistoCrearCuenta() {
           </p>
         </div>
         <ButtonContinuar></ButtonContinuar>
-      </div>
+      </form>
     </>
   );
 }
