@@ -52,13 +52,13 @@ function InicioDeSesion() {
   const handleChangeInput = (event) => {
     setInputValue(event.target.value);
 
-    if (/^\S+@\S+\.\S+$/.test(event.target.value)) {
+    /* if (/^\S+@\S+\.\S+$/.test(event.target.value)) {
       setEmail(inputValue);
       setUserName("");
     } else {
       setUserName(inputValue);
       setEmail("");
-    }
+    } */
     if (event.target.value.length === 0){
       setErrorInput(true);
     } else {
