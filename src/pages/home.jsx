@@ -12,17 +12,17 @@ function Home() {
             <img src="/images/home/bell.svg" alt='campaign'/>
         </div>
         <div className='container-main-home'>
-            <div className='container-options-home'>
-                <div className='container-imagenhome-animation1'>
-                    <img className='cupido-musical-image1' src="/images/home/cherub.svg" alt='imagen'/>
-                    <img className='cupido-musical-image2' src="/images/home/headphones.svg" alt='imagen'/>
-                </div>
+                <Link to={"/tinderMusica"}><div className='container-options-home'>
+                    <div className='container-imagenhome-animation1'>
+                        <img className='cupido-musical-image1' src="/images/home/cherub.svg" alt='imagen'/>
+                        <img className='cupido-musical-image2' src="/images/home/headphones.svg" alt='imagen'/>
+                    </div>
                 
-                <div className='texto-options-home'>
-                    <h4>Cupido Musical</h4>
-                    <p>Tus artistas favoritos nunca van a dejarte con el corazón roto.</p>
-                </div>
-            </div>
+                    <div className='texto-options-home'>
+                        <h4>Cupido Musical</h4>
+                        <p>Tus artistas favoritos nunca van a dejarte con el corazón roto.</p>
+                    </div>
+                </div></Link>
             <Link to={"/musicaContextual"}><div className='container-options-home'>
                 <div className='container-imagenhome-animation1'>
                     <img className='cupido-musical-image3' src="/images/home/map.svg" alt='imagen'/>

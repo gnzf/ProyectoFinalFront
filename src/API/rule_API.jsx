@@ -20,6 +20,6 @@ const api = axios.create({
   (error) => {
     return Promise.reject(error);
   }
-);
- */
+); */
+
 export default api;

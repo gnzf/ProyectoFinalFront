@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import "../styles/musicaContextual/musicaContextual.css"
 import backArrow from "../../public/images/home/leftarrowback.svg"
 import GenerosMC from '../components/musicaContextual/generosMC';
-import { getCanciones, getGeneros } from "../API/rule_canciones";
+import { getActividades, getCanciones, getClimas, getGeneros, getMoods } from "../API/rule_canciones";
 import { Link } from 'react-router-dom';
 
 function MusicaContextual() {
@@ -11,11 +11,25 @@ function MusicaContextual() {
     const [resultados, setResultados] = useState([]);
     const [clima, setClima] = useState('');
     const [letra, setLetra] = useState("");
+    const [generos, setGeneros] = useState([]);
     
+    
+
+
 
     useEffect(() => {
         const fetchData = async () => {
           try {
+            
+           /*  const fetchGeneros = getGeneros();
+            const fetchActividades = getActividades();
+            const fetchClimas = getClimas();
+            const fetchMoods = getMoods();
+            const generosResponse = await fetchGeneros;
+            const actividadesResponse = await fetchActividades;
+            const climasResponse = await fetchClimas;
+            const moodsResponse = await fetchMoods; */
+            
             const resultado = await getGeneros();
             setResultados(resultado);
           } catch (error) {

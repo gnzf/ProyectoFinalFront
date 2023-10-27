@@ -15,11 +15,13 @@ import PlaylistGenerada from './pages/PlaylistGenerada'
 import RecuperarCuenta from './pages/RecuperarCuenta';
 import Buscador from './pages/Buscador';
 import BusquedaReciente from './components/Buscador/BusquedaReciente'
+import Error404 from './components/error404/error404';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <InicioDeApp/>
+    element: <InicioDeApp/>,
+    errorElement: <Error404/>
   },
   {
     path: "/register",

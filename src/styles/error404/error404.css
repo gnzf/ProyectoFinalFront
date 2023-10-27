@@ -1,0 +1,28 @@
+.container-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    font-family: Rubik;
+  }
+  
+  .img-error {
+    width: 100%;
+    height: 100%;
+  }
+  .title-error {
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .p-error {
+    text-align: center;
+    font-weight: 400;
+  }
+  
+  .btn-error {
+    text-decoration: none;
+    color: #ff8e0a;
+    font-weight: 500;
+    cursor: pointer;
+  }
