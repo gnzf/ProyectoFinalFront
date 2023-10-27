@@ -1,13 +1,21 @@
+import { Link } from "react-router-dom";
 import "../../styles/perfil/Configuration.css";
+import { logout } from "../../API/rule_auth";
 
 function Configuration() {
+
+  const logoutfunction = () => {
+    logout();
+    navigate("/");
+  };
+
   return (
     <>
       <div className="config-container">
         <div className="top-nav">
-          <a href="" className="link-arrow">
+          <Link to={"/perfil"} href="" className="link-arrow">
             <img src="/image/perfil/placeholder.svg" alt="" />
-          </a>
+          </Link>
           <h1 className="title-config">Configuración</h1>
         </div>
 
@@ -18,9 +26,9 @@ function Configuration() {
 
         <div className="close-session">
           <p className="version-config">Versión: V1.25.03</p>
-          <a href="" className="close-config">
+          <Link onClick={logoutfunction} to={"/"} href="" className="close-config">
             Cerrar Sesión
-          </a>
+          </Link>
         </div>
       </div>
     </>

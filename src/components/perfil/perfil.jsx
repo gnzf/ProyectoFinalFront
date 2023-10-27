@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import FooterHome from "../home/footerHome";
 import Playlists from "../playlists/Playlists";
 import { getPlaylist, getUsername } from "../../API/rule_usuarios";
+import { Link } from "react-router-dom";
 
 function perfil() {
   const [playlist, setPlaylist] = useState([]);
@@ -45,9 +46,9 @@ function perfil() {
             src="/image/perfil/Rectangle 2.svg"
             alt="img-profile"
             />
-          <a className="btn-config-profile">
+          <Link to={"/configuracionPerfil"} className="btn-config-profile">
             <img src="/image/perfil/gear.svg" alt="img-configuration" />
-          </a>
+          </Link>
           <h1 className="name-profile">{user.username}</h1>
           <p className="nickname">@{user.username}</p>
           </div>
@@ -69,7 +70,7 @@ function perfil() {
      
         </div>
       </div>
-        <FooterHome/>
+        <FooterHome ruta="perfil"/>
     </>
   );
 }

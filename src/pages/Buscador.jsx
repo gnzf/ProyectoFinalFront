@@ -129,7 +129,7 @@ function Buscador() {
           ) : null}
       </div>
 
-      <FooterHome />
+      <FooterHome ruta="buscador"/>
     </>
   );
 }

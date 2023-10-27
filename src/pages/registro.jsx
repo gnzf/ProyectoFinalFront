@@ -28,7 +28,7 @@ function Registro() {
   return (
     <div className="registro-container">
       <form onSubmit={handleSubmit}>
-        <Encabezado encabezado="Crear Cuenta" />
+        <Encabezado link={"/"} encabezado="Crear Cuenta" />
         <div className="titulo">¿Cuál es tu correo electrónico?</div>
         <label className="correo-electronico"> Corre electrónico:</label>
         <InputGeneral value={email} onChange={(event) =>{ setEmail(event.target.value)}}/>

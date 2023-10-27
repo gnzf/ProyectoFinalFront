@@ -1,6 +1,7 @@
 .backward-button{
     background-color: transparent;
     border: none;
+    cursor: pointer;
 }
 
 .left-arrow {

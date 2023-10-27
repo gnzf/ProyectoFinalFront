@@ -18,10 +18,10 @@ import BusquedaReciente from './components/Buscador/BusquedaReciente'
 
 const router = createBrowserRouter([
   {
-    path: "/home",
-    element: <Home/>
-},
-    {
+    path: "/",
+    element: <InicioDeApp/>
+  },
+  {
     path: "/register",
     element: <Registro />,
   },
@@ -30,16 +30,20 @@ const router = createBrowserRouter([
     element: <RegistoCrearCuenta />,
   },
   {
+    path: "/login",
+    element: <InicioDeSesion/>
+  },
+  {
+    path: "/home",
+    element: <Home/>
+  },
+  {
     path: "/musicaContextual",
     element: <MusicaContextual/>
   },
   {
     path: "/playlistGenerada",
     element: <PlaylistGenerada/>
-  },
-  {
-    path: "/",
-    element: <InicioDeApp/>
   },
   {
     path: "/tinderMusica",
@@ -52,10 +56,6 @@ const router = createBrowserRouter([
   {
     path: "/configuracionPerfil",
     element: <Configuration/>
-  },
-  {
-    path: "/login",
-    element: <InicioDeSesion/>
   },
   {
     path: "/recuperar-cuenta",

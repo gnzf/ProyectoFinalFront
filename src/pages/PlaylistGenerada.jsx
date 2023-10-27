@@ -43,7 +43,7 @@ function PlaylistGenerada() {
         </div>
 
 
-        <FooterHome/>
+        <FooterHome ruta="inicio"/>
     </div>
   )
 }

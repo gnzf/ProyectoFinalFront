@@ -1,13 +1,14 @@
 import React from 'react'
 import "../styles/home/home.css"
 import FooterHome from '../components/home/footerHome';
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
     <div className='all-home-stats'>
         <div className='notifications-bar-home'>
             <h1>Música ya</h1>
-            <img src="/images/home/vector.svg" alt='clock'/>
+            <img src="/images/home/Vector.svg" alt='clock'/>
             <img src="/images/home/bell.svg" alt='campaign'/>
         </div>
         <div className='container-main-home'>
@@ -22,7 +23,7 @@ function Home() {
                     <p>Tus artistas favoritos nunca van a dejarte con el corazón roto.</p>
                 </div>
             </div>
-            <div className='container-options-home'>
+            <Link to={"/musicaContextual"}><div className='container-options-home'>
                 <div className='container-imagenhome-animation1'>
                     <img className='cupido-musical-image3' src="/images/home/map.svg" alt='imagen'/>
                     <img className='cupido-musical-image4' src="/images/home/question.svg" alt='imagen'/>
@@ -31,9 +32,9 @@ function Home() {
                     <h4>Música Contextual</h4>
                     <p>Creamos la playlist perfecta para cualquier situación.</p>
                 </div>
-            </div>
+            </div></Link>
         </div>
-        <FooterHome/>
+        <FooterHome ruta="inicio"/>
     
     
     </div>

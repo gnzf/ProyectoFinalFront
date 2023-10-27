@@ -32,7 +32,7 @@ function RegistoCrearCuenta() {
   return (
     <>
       <form onSubmit={handleSubmit} className="registro-crear-cuenta-container">
-        <Encabezado encabezado="Crear Cuenta" />
+        <Encabezado link={"/register"} encabezado="Crear Cuenta" />
         <div className="titulo">Ingrese un nombre de usuario y contraseña</div>
         <label className="nombre-de-usuario"> Nombre de Usuario:</label>
         <input className="input-general" type="text" value={inputUsername} onChange={(event) =>{ setInputUsername(event.target.value)}}/>

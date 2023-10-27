@@ -1,7 +1,7 @@
 .all-home-stats{
     width: 100vw;
-    height: 100vh;
-    font-family: Rubik, sans-serif;
+    height: 95vh;
+    font-family: Rubik;
 }
 
 .notifications-bar-home{
@@ -27,7 +27,7 @@
 .container-main-home{
     display: flex;
     flex-direction: column;
-    height: 72vh;
+    height: 69vh;
     padding: 0 1.5rem;
 }
 
@@ -95,4 +95,9 @@ rotate: 68.87 deg;
 .texto-options-home h4{
     padding: 0;
     margin: 0;
+    color: black;
+}
+
+.container-main-home a{
+    text-decoration: none;
 }

@@ -127,7 +127,7 @@ function InicioDeSesion() {
     <div className="login-container">
       {showOverlay && <div className="overlay-custom" />}
       <form className="form-login-wrapper" onSubmit={handleSubmit}>
-        <TitleArrow title="Iniciar Sesión" />
+        <TitleArrow link={"/"} title="Iniciar Sesión" />
         <FieldsetEmailUser value={inputValue} onChange={handleChangeInput} errorInput={errorInput} />
         <FieldSetPassword
           labelPasswordLi="Contraseña: "

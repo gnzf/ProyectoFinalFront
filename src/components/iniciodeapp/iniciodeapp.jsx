@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../../styles/iniciodeapp/inicioDeApp.css";
 
 function InicioDeApp() {
@@ -20,7 +21,7 @@ function InicioDeApp() {
             <h1 className="title-start">Música a medida.</h1>
 
             <div className="pages-btn-start">
-              <button className="btn-free">Registrarse Gratis</button>
+              <Link to={"/register"}><button className="btn-free">Registrarse Gratis</button></Link>
               <button className="btn-google-start">
                 <img
                   className="logo-google-start"
@@ -38,9 +39,9 @@ function InicioDeApp() {
                 Continuar con Apple
               </button>
             </div>
-            <a className="login-start" href="">
+            <Link className="login-start" href="" to={"/login"}>
               Iniciar Sesión
-            </a>
+           </Link>
           </div>
         </div>
       </div>
