@@ -10,7 +10,7 @@ import { getCanciones } from "../API/rule_canciones";
 import AllSongs from "../components/playlistgenerada/AllSongs";
 import FooterHome from "../components/home/footerHome";
 import CardBusqueda from "../components/Buscador/CardBusqueda";
-import "../styles/Buscador/BusquedaResultado.css"
+import "../styles/Buscador/BusquedaResultado.css";
 import vengeance from "../../public/images/Buscador/image-placeholder (10).svg";
 
 function Buscador() {
@@ -18,8 +18,7 @@ function Buscador() {
   const [isClicked, setIsClicked] = useState(false);
   const [resultados, setResultados] = useState([]);
   const [letra, setLetra] = useState("");
-  const [buscar, setBuscar] = useState(false)
-
+  const [buscar, setBuscar] = useState(false);
 
   const handleInputClick = () => {
     setIsClicked(true);
@@ -32,7 +31,7 @@ function Buscador() {
   const handleSearch = (letra) => {
     setLetra(letra);
     setBuscar(true);
-  }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,9 +46,10 @@ function Buscador() {
     fetchData();
   }, []);
 
-  const filteredResultados = resultados.filter((cancion) =>
-    cancion.cancion_name.toLowerCase().includes(letra.toLowerCase()) ||
-    cancion.name_artist.toLowerCase().includes(letra.toLowerCase())
+  const filteredResultados = resultados.filter(
+    (cancion) =>
+      cancion.cancion_name.toLowerCase().includes(letra.toLowerCase()) ||
+      cancion.name_artist.toLowerCase().includes(letra.toLowerCase())
   );
 
   return (
@@ -90,7 +90,7 @@ function Buscador() {
             />
           </div>
         </div>
-         {isClicked && letra == 0 ? (
+        {isClicked && letra == 0 ? (
           <div
             className={`recent-search animate-${
               arrowClicked ? "right-reverse" : "right"
@@ -98,41 +98,38 @@ function Buscador() {
           >
             <BusquedaReciente />
           </div>
-        ) : 
-        letra.length > 0 && (
-          <BusquedaResultado/>
+        ) : (
+          letra.length > 0 && <BusquedaResultado />
         )}
+      </div>
+      {buscar ? (
+        <div>
+          {filteredResultados.map((canciones) => (
+            <CardBusqueda
+              imgCardAlbum={vengeance}
+              title={canciones.cancion_name}
+              artistName={canciones.name_artist}
+            />
+          ))}
         </div>
-        {buscar ? (
-              <div>
-                {filteredResultados.map((canciones) => (
-                  <CardBusqueda
-                    imgCardAlbum={vengeance}
-                    title={canciones.cancion_name}
-                    artistName={canciones.name_artist}
-                  />
-                ))}
-              </div>
-            ) : null}
-         <div className={`grillas ${isClicked ? "animate-left" : ""}`}>
-          {filteredResultados.length > 0 ? (
-        <div className="grillaAlbums">
-              {filteredResultados.map((canciones) => (
-                <GrillaAlbum
-                  img={FlowersMiley}
-                  title={canciones.cancion_name}
-                  artistName={canciones.name_artist}
-                />
-              ))
-            }
-            </div>
-          ) : null}
+      ) : null}
+      <div className={`grillas ${isClicked ? "animate-left" : ""}`}>
+        {filteredResultados.length > 0 ? (
+          <div className="grillaAlbums">
+            {filteredResultados.map((canciones) => (
+              <GrillaAlbum
+                img={FlowersMiley}
+                title={canciones.cancion_name}
+                artistName={canciones.name_artist}
+              />
+            ))}
+          </div>
+        ) : null}
       </div>
 
-      <FooterHome ruta="buscador"/>
+      <FooterHome ruta="buscador" />
     </>
   );
 }
-     
-export default Buscador;
 
+export default Buscador;
