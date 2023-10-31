@@ -38,16 +38,6 @@
   border: 2px solid #bfc0c1;
 }
 
-/*  .fieldset-container-custom input::placeholder{
-    color: var(--medios-tonos-gris-2, #BFC0C1);
-    font-family: Rubik;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0.5px;
-  } */
-
 .password-input-login-container {
   display: flex;
   padding: 0px 10px;

@@ -3,41 +3,30 @@ import "../styles/Buscador/Buscador.css";
 import SearchBar from "../components/Buscador/SearchBar";
 import GrillaAlbum from "../components/Buscador/GrillaAlbum";
 import FlowersMiley from "../../public/images/image-placeholder.svg";
-import KillBillSZA from "../../public/images/image-placeholder (2).svg";
-import BusquedaReciente from "../components/Buscador/BusquedaReciente";
-import BusquedaResultado from "../components/Buscador/BusquedaResultado";
 import { getCanciones } from "../API/rule_canciones";
-import AllSongs from "../components/playlistgenerada/AllSongs";
 import FooterHome from "../components/home/footerHome";
-import CardBusqueda from "../components/Buscador/CardBusqueda";
-import "../styles/Buscador/BusquedaResultado.css";
-import vengeance from "../../public/images/Buscador/image-placeholder (10).svg";
+import { useNavigate } from "react-router";
 
 function Buscador() {
-  const [arrowClicked, setArrowClicked] = useState(false);
+  const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
-  const [resultados, setResultados] = useState([]);
-  const [letra, setLetra] = useState("");
-  const [buscar, setBuscar] = useState(false);
+
+  const [canciones, setCanciones] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [redirectingSearcher, setRedirectingSearcher] = useState(false);
+
 
   const handleInputClick = () => {
     setIsClicked(true);
-  };
-
-  const handleArrowClick = () => {
-    setArrowClicked(true);
-  };
-
-  const handleSearch = (letra) => {
-    setLetra(letra);
-    setBuscar(true);
+    setRedirectingSearcher(true);
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const resultado = await getCanciones();
-        setResultados(resultado);
+        setCanciones(resultado);
       } catch (error) {
         alert("Error al obtener los datos.");
       }
@@ -46,11 +35,14 @@ function Buscador() {
     fetchData();
   }, []);
 
-  const filteredResultados = resultados.filter(
-    (cancion) =>
-      cancion.cancion_name.toLowerCase().includes(letra.toLowerCase()) ||
-      cancion.name_artist.toLowerCase().includes(letra.toLowerCase())
-  );
+  useEffect(() => {
+    if (redirectingSearcher) {
+      const timer = setTimeout(() => {
+        navigate("/searcher");
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [redirectingSearcher, navigate]);
 
   return (
     <>
@@ -59,26 +51,21 @@ function Buscador() {
           <div className="title-container">
             <div className="title-wrapper">
               <h1
-                className={` ${isClicked ? "animate-left" : ""} ${
-                  arrowClicked ? "animate-left-reverse" : ""
-                }`}
+                className={` ${isClicked ? "animate-left" : ""}`}
               >
                 Buscador
               </h1>
               <SearchBar
+                classNameBuscador={`buscador-searchbar`}
                 onClickInput={handleInputClick}
                 isClicked={isClicked}
-                onArrowClicked={handleArrowClick}
-                arrowClicked={arrowClicked}
-                setArrowClicked={setArrowClicked}
-                onSearch={handleSearch}
               />
             </div>
           </div>
           <div
             className={`divider-searcher ${
               isClicked ? "animate-left-down" : ""
-            } ${arrowClicked ? "animate-left-down-reverse" : ""}`}
+            }`}
           >
             <h2>Top 20s</h2>{" "}
             <hr
@@ -90,44 +77,29 @@ function Buscador() {
             />
           </div>
         </div>
-        {isClicked && letra == 0 ? (
-          <div
-            className={`recent-search animate-${
-              arrowClicked ? "right-reverse" : "right"
-            }`}
-          >
-            <BusquedaReciente />
-          </div>
-        ) : (
-          letra.length > 0 && <BusquedaResultado />
-        )}
-      </div>
-      {buscar ? (
-        <div>
-          {filteredResultados.map((canciones) => (
-            <CardBusqueda
-              imgCardAlbum={vengeance}
-              title={canciones.cancion_name}
-              artistName={canciones.name_artist}
-            />
-          ))}
+        <div className={`grillas ${isClicked ? "animate-left" : ""}`}>
+          {isLoading && <div>Cargando...</div>}
+          {error && <div>Error: {error}</div>}
+          {canciones && (
+            <div className="grillaAlbums">
+              {canciones.map((canciones) => (
+                <GrillaAlbum
+                  img={FlowersMiley}
+                  title={canciones.cancion_name}
+                  artistName={canciones.name_artist}
+                />
+              ))}
+            </div>
+          )}
         </div>
-      ) : null}
-      <div className={`grillas ${isClicked ? "animate-left" : ""}`}>
-        {filteredResultados.length > 0 ? (
-          <div className="grillaAlbums">
-            {filteredResultados.map((canciones) => (
-              <GrillaAlbum
-                img={FlowersMiley}
-                title={canciones.cancion_name}
-                artistName={canciones.name_artist}
-              />
-            ))}
-          </div>
-        ) : null}
+        <div
+          className={`footer-buscador ${
+            isClicked ? "animate-footer-down" : ""
+          } `}
+        >
+          <FooterHome ruta="buscador" />
+        </div>
       </div>
-
-      <FooterHome ruta="buscador" />
     </>
   );
 }

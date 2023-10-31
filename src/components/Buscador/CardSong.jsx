@@ -1,12 +1,10 @@
 import React from "react";
-import "../../styles/Buscador/CardBusqueda.css"
+import "../../styles/Buscador/CardSong.css"
 
-
-
-function CardBusqueda(props) {
+function CardSong(props) {
 
   return (
-    <div className="card-busqueda-reciente">
+    <div className="card-busqueda-reciente card-songs">
       <img className="busqueda-reciente-albumImg" src={props.imgCardAlbum} alt="" />
       <div className="card-busqueda-reciente-wrapper">
         <p>{props.title}</p>
@@ -20,4 +18,4 @@ function CardBusqueda(props) {
   );
 }
 
-export default CardBusqueda;
+export default CardSong;

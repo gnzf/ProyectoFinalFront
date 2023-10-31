@@ -1,17 +1,19 @@
-.sortbutton-button{
-  display: flex;
+.sortbutton {
+  display: flex; 
+  gap: 8px;
+}
+
+.sortbutton button{
   height: 36px;
   padding: 6px 8px;
-  /*   justify-content: center;
-    align-items: center; */
   border-radius: 0px 12px;
   text-align: center;
+  font-family: Rubik;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 18px; /* 150% */
   letter-spacing: 0.5px;
-  margin-right: 2rem;
 }
 
 .first-sort {
