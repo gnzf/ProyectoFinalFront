@@ -2,7 +2,7 @@ import React from 'react'
 import "../../styles/Buscador/SortBtn.css"
 export default function SortBtn() {
   return (
-    <div className='sortbutton-button'>
+    <div className='sortbutton'>
     <button className='first-sort'>Top</button>
     <button className='sort-search-btn'>Canciones</button>
     <button className='sort-search-btn'>Álbumes</button>

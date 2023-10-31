@@ -1,7 +1,6 @@
 .breadcrumb-busqueda-reciente {
     display: flex;
     list-style: none;
-    gap: 16px;
   }
 
   .breadcrumb-busqueda-reciente ul li {
@@ -9,6 +8,10 @@
   }
 
   .breadcrumb-busqueda-reciente li + li:before {
-    padding: 8px;
+    padding: 7px;
     content: "|\00a0";
   }
+
+.card-busqueda-reciente .card-songs {
+  margin-top: 15px;
+}

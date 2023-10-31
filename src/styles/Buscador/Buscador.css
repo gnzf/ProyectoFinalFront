@@ -1,12 +1,13 @@
 .buscador-container {
   width: 100%;
+  height: 100vh;
 }
 
 .fixed-top {
-  /*   position: fixed; */
   top: 0;
   width: 100%;
 }
+
 .title-container {
   width: 100vw;
 }
@@ -50,13 +51,21 @@
   letter-spacing: 0.5px;
 }
 
+.buscador-searchbar {
+  margin: 14px 24px;
+}
+
+.searcher-searchbar-container {
+  margin: 98px 24px 0px;
+}
+
 .divider-searcher {
   display: flex;
   width: 320px;
   justify-content: flex-start;
   align-items: center;
   gap: 16px;
-  margin-top: 24px;
+  margin-bottom: 32px;
   margin-left: 24px;
 }
 
@@ -74,26 +83,26 @@
   display: flex;
   margin-left: 16px;
   margin-right: 16px;
-  margin-top: 24px;
+  height: 58%;
+/*   margin-top: 24px; */
 }
 
 .grillaAlbums {
-  /*  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
   display: inline-flex;
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
-  height: 62vh;
+/*   height: 55vh; */
+/*   height: 50vh; */
   overflow: auto;
 }
 
 /*****/
-/*General para card artista y cardBusqueda*/
+/*General para cardArtista y cardSong*/
 .card-busqueda-reciente {
   display: flex;
   align-items: center;
-  width: 320px;
+  /* width: 320px; */
   height: 48px;
   gap: 12px;
   margin: 5px 24px;
@@ -108,6 +117,11 @@
 .card-busqueda-reciente-wrapper {
   width: 218px;
   margin-left: 15px;
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+flex: 1 0 0;
 }
 
 
@@ -155,12 +169,10 @@ li {
   width: 24px;
   height: 24px;
 }
-/******/
 
-/* .animate-right {
-  animation: slideInRight 0.5s forwards 1s;
-  opacity: 0;
-} */
+.footer-buscador {
+  margin-top: -12px;
+}
 
 
 /*ANIMACIONES*/
@@ -171,33 +183,28 @@ li {
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* .animate-left-reverse {
-  transform: translateX(0);
-  opacity: 1; 
-  transition: transform 0.5s ease, opacity 1s ease;
-} */
-
 .animate-left-down {
   transform: translateY(50px) translateX(-50%) translateX(-100%);
   opacity: 0;
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-/* .animate-left-down-reverse {
-  transform: translateY(0) translateX(0); 
-  opacity: 1; 
-  transition: transform 0.5s ease, opacity 2s ease;
-} */
 
-.animate-up {
-  transform: translateY(-60px);
-  transition: transform 2s ease 0.5s, opacity 0.5s ease 0.5s;
+ @keyframes animateUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-50px); 
+    opacity: 1;
+  }
 }
 
-/* .animate-up-reverse {
-  transform: translateY(0);
-  transition: transform 2s ease 0.5s, opacity 0.5s ease 0.5s;
-} */
+.animate-up {
+  animation: animateUp 2s ease 1s forwards;
+}
+
 
 @keyframes slideInRight {
   0% {
@@ -215,7 +222,7 @@ li {
   opacity: 0;
 }
 
-/* @keyframes slideInRightReverse {
+@keyframes slideInRightReverse {
   0% {
     transform: translateX(0);
     opacity: 1;
@@ -227,17 +234,29 @@ li {
 }
 
 .animate-right-reverse {
-  animation: slideInRightReverse 2s forwards;
+  animation: slideInRightReverse 0.5s forwards;
   opacity: 1;
-} */
-
-.divider-searcher,
-.grillas.animate-left-down {
-  display: none;
 }
 
-@media (max-width: 768px) {
-  .form-login-wrapper {
-    align-items: center;
+
+@keyframes moveDown {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.animate-footer-down {
+  animation: moveDown 0.5s forwards;
+}
+
+@media (min-width: 390px) {
+  .grillas{
+    height: 60%;
+  }
+  .footer-buscador {
+    margin-top: -3px;
   }
 }

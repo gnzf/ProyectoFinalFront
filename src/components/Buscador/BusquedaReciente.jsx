@@ -1,5 +1,4 @@
 import React from "react";
-import CardBusqueda from "./CardBusqueda";
 import imgCardAlbum from "../../../public/images/Buscador/image-placeholder (3).svg";
 import neighborhoods from "../../../public/images/Buscador/image-placeholder (4).svg";
 import complicated from "../../../public/images/Buscador/image-placeholder (6).svg";
@@ -9,6 +8,7 @@ import "../../styles/Buscador/Buscador.css";
 import CardArtista from "./CardArtista";
 import bizarrap from "../../../public/images/Buscador/image-placeholder (5).svg";
 import "../../styles/Buscador/BusquedaReciente.css"
+import CardSong from "./CardSong";
 
 function BusquedaReciente() {
   return (
@@ -23,14 +23,14 @@ function BusquedaReciente() {
         />
       </div>
       <div className="busquedas-recientes-cards-container">
-        <CardBusqueda
+        <CardSong
           imgCardAlbum={imgCardAlbum}
           name={"LLYM"}
           type={"Canción"}
           artistName={"ROSALÍA"}
           imgCross={imgCross}
         />
-        <CardBusqueda
+        <CardSong
           imgCardAlbum={neighborhoods}
           name={"Neighbordhoods"}
           type={"Álbum"}
@@ -42,14 +42,14 @@ function BusquedaReciente() {
           artistName={"Bizarrap"}
           imgCross={imgCross}
         />
-        <CardBusqueda
+        <CardSong
           imgCardAlbum={complicated}
           name={"Complicated"}
           type={"Canción"}
           artistName={"Avril Lavigne"}
           imgCross={imgCross}
         />
-        <CardBusqueda
+        <CardSong
           imgCardAlbum={mafiosa}
           name={"Mafiosa"}
           type={"Canción"}

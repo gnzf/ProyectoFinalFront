@@ -5,7 +5,7 @@ function Button(props) {
   return (
     <button
       className={`btn-custom btn-login ${props.fieldsFilled ? "filled" : ""}`}
-      type="submit"
+      type={props.type}
       disabled={!props.fieldsFilled}
       onClick={props.onClick}
     >

@@ -4,72 +4,64 @@ import search from "../../../public/images/Buscador/style=outline, state=inactiv
 import leftArrow from "../../../public/images/Buscador/position=left.svg";
 import borrar from "../../../public/images/Buscador/icon-right-placeholder.svg";
 import "../../styles/Buscador/Buscador.css";
-import "../../styles/Buscador/Searchbar.css"
+import "../../styles/Buscador/Searchbar.css";
 
 function SearchBar({
   onClickInput,
   isClicked,
   onArrowClicked,
-  arrowClicked,
-  setArrowClicked,
-  onSearch
+  onSearch,
+  isArrow,
+  resetCanciones,
+  resetArtistas,
+  classNameBuscador,
+  classNameSearcher,
 }) {
-  const [isArrowVisible, setIsArrowVisible] = useState(false);
-  const [arrowChanged, setArrowChanged] = useState(false);
-  const [letra, setLetra] = useState("")
-  
-  
+
+  const [searchMusic, setsearchMusic] = useState("");
+
   const handleSearch = (event) => {
-    setLetra(event.target.value)
-    onSearch(event.target.value)
+    setsearchMusic(event.target.value);
+    onSearch(event.target.value);
   };
 
   const handleInputClick = () => {
     onClickInput();
-    if (!arrowChanged) {
-      setIsArrowVisible(!isArrowVisible);
-      setArrowChanged(true);
-      onClickInput(letra);
-      /*       setArrowClicked(true); */
-    }
   };
 
-  const handleClearSearch = (event) => {
-    setLetra("");
+  const handleLeftArrow = () => {
+    onArrowClicked();
+  }
+
+  const handleClearSearch = () => {
+    setsearchMusic("");
+    resetCanciones([]);
+    resetArtistas([]);
   };
 
   return (
-    <div
-      className={`searchbar ${isClicked ? "animate-up" : ""} ${
-        arrowClicked ? "animate-up-reverse" : ""
-      }`}
-    >
-      {/*  <img className={`imgBuscador lupaImg ${isArrowVisible ? 'animate-up' : ''}`} src={isClicked ? leftArrow : search }/> */}
-
-      {!isArrowVisible ? (
+    <div className={`searchbar ${classNameBuscador} ${classNameSearcher}`}>
+      {isArrow ? (
         <img
-          className={`imgBuscador lupaImg ${isClicked ? "animate-up" : ""} ${
-            arrowClicked ? "animate-up-reverse" : ""
-          }`}
-          src={search}
+          className={`imgBuscador leftArrowImg `}
+          src={leftArrow}
+          onClick={handleLeftArrow}
         />
       ) : (
         <img
-          className={`imgBuscador leftArrowImg ${
-            isArrowVisible ? "animate-up" : ""
-          } ${arrowClicked ? "animate-up-reverse" : ""}`}
-          src={leftArrow}
-          onClick={onArrowClicked}
+          className={`imgBuscador lupaImg ${isClicked ? "animate-up" : ""}`}
+          src={search}
         />
       )}
+
       <input
         type="text"
-        value={letra}
+        value={searchMusic}
         placeholder="¿Qué deseas escuchar?"
         onChange={handleSearch}
         onClick={handleInputClick}
       />
-      {letra.length > 0 && (
+      {searchMusic.length > 0 && (
         <img
           className="cruz-borrar-buscador"
           src={borrar}
@@ -77,8 +69,6 @@ function SearchBar({
           alt="cruz-borrar"
         />
       )}
-
-      {/*   <img src="" alt="cruz-borrar" /> */}
     </div>
   );
 }
