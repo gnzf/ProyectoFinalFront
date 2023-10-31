@@ -9,18 +9,21 @@ import {
   getGeneros,
   getMoods,
 } from "../API/rule_canciones";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { addPlaylist, getCancionesPlaylist } from "../API/rule_playlist";
 
 function MusicaContextual() {
   const [ocasion, setOcasion] = useState([]);
   const [sentimiento, setSentimiento] = useState([]);
   const [resultados, setResultados] = useState([]);
-  const [clima, setClima] = useState([]);
+  const [climas, setClimas] = useState([]);
   const [generos, setGeneros] = useState([]);
+
   const [generoResultados, setGeneroResultados] = useState([]);
   const [actividadResultados, setActividadResultados] = useState([]);
   const [climaResultados, setClimaResultados] = useState([]);
   const [moodsResultados, setMoodsResultados] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -47,6 +50,39 @@ function MusicaContextual() {
     fetchData();
   }, []);
 
+  const handleSubmit = async () => {
+    try {
+      // Primero, crea la playlist
+      const playlistCreateResponse = await addPlaylist({ user_id: user_id});
+  
+      if (playlistCreateResponse.playlist_id) {
+        // Si se creó la playlist con éxito, procede a obtener las canciones
+        const cancionesResponse = await getCancionesPlaylist({
+          actividad: ocasion,
+          estadodeanimo: sentimiento,
+          clima: climas,
+          genero: generos,
+        });
+  
+        console.log(cancionesResponse);
+  
+        // Aquí puedes agregar las canciones a la playlist usando playlistCreateResponse.playlist_id
+        // Asegúrate de implementar esta lógica según tus necesidades
+  
+        alert("Playlist y canciones creadas exitosamente");
+        navigate("/playlistGenerada");
+      } else {
+        // Manejo de errores si no se pudo crear la playlist
+        alert("No se pudo crear la playlist");
+      }
+    } catch (error) {
+      // Manejo de errores generales
+      alert(error);
+    }
+  };
+  
+  
+
   return (
     <div className="all-musicacontextual-stats">
       <div className="top-musicacontextual">
@@ -61,7 +97,6 @@ function MusicaContextual() {
           name="actividad"
           value={ocasion}
           onChange={(e) => setOcasion(e.target.value)}
-          onClick={(e) => setOcasion(e.target.value)}
         >
           <option value="" hidden>
             Actividad
@@ -94,8 +129,8 @@ function MusicaContextual() {
           name="clima"
           placeholder="Clima"
           required
-          value={clima}
-          onChange={(e) => setClima(e.target.value)}
+          value={climas}
+          onChange={(e) => setClimas(e.target.value)}
         >
           <option value="" hidden>
             Clima
@@ -111,11 +146,12 @@ function MusicaContextual() {
           {generoResultados?.map((generos) => (
             <GenerosMC
               generoName={generos.genre_name}
-              onChange={(e) => setGeneros(e.target.value)}
+              value={generos}
+              onClick={(e) => setGeneros(e.target.value)}
             />
           ))}
         </div>
-        <button className="crear-playlist-musicaContextual">
+        <button type="submit" onClick={handleSubmit}  className="crear-playlist-musicaContextual">
           <p>Crear Playlist</p>
         </button>
       </div>

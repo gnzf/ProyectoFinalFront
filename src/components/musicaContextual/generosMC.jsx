@@ -14,9 +14,9 @@ function GenerosMC(props) {
   return (
     <div>
       <div className="container-generosmc">
-        <button className={currentClass} onClick={cambiarColor}>
+        <option value={props.value} onChange={props.onChange} className={currentClass} onClick={cambiarColor}>
           {props.generoName}
-        </button>
+        </option>
       </div>
     </div>
   );
