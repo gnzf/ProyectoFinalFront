@@ -1,11 +1,11 @@
 .searchbar {
     display: flex;
     flex-direction: row;
-    margin: 24px;
     border-radius: 0px 16px;
     border: 2px solid var(--medios-tonos-gris-2, #bfc0c1);
     overflow: hidden;
     background-color: #fdfdfd;
+    z-index: 1;
   }
 
   .searchbar input {
@@ -28,7 +28,6 @@
     font-weight: 400;
     letter-spacing: 0.5px;
     width: 216px;
-    /* padding-left: 16px; */
   }
 
   .searchbar .imgBuscador {
@@ -38,7 +37,6 @@
     height: 24px;
     justify-content: center;
     align-items: center;
-    /*   padding-left: 11px; */
     margin: 10px;
   }
 
@@ -48,8 +46,8 @@
 
   .cruz-borrar-buscador {
     position: absolute;
-    top: 12px;
-    right: 12px;
+    top: 15px;
+    right: 17px;
     width: 24px;
     height: 24px;
     flex-shrink: 0;
@@ -67,27 +65,3 @@
     border: 2px solid #ff8e0a;
   }
   
-
-  .searchbar .leftArrowImg.animate-up {
-    transform: translateY(-10%);
-    transition: transform 2s;
-    transform-origin: bottom;
-  }
-
-  /* .searchbar .leftArrowImg.animate-up-reverse {
-  transform: translateY(0);
-  transition: transform 2s;
-  transform-origin: bottom;
-} */
-
-.lupaImg.animate-up {
-    transform: translateY(-200%);
-    transform-origin: bottom;
-    transition: transform 4s ease-in-out, opacity 0.5s ease-in-out;
-  }
-
-  /* .lupaImg.animate-up-reverse {
-  transform: translateY(0);
-  transform-origin: bottom;
-  transition: transform 4s ease-in-out, opacity 0.5s ease-in-out;
-} */

@@ -3,7 +3,7 @@
     align-items: center;
     gap: 16px;
     position: relative;
-    top: -64px;
+    margin-bottom: 15px;
   }
 
   .recent-search-wrapper span {
@@ -23,8 +23,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-    margin-top: -39px;
-    /* margin-left: 24px; */
   }
 
   .clear-recent-search-history {

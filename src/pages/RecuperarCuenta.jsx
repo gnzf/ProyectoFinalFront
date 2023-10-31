@@ -6,11 +6,12 @@ import planeSendReset from "../../public/images/InicioDeSesión/paper-plane.svg"
 import TitleArrow from "../components/InicioDeSesion/TitleArrow";
 import {FieldsetEmailUser} from "../components/InicioDeSesion/Fieldsets";
 import Button from "../components/InicioDeSesion/Button";
+import { Link } from "react-router-dom";
 
 function RecuperarCuenta() {
   const [accountReset, setAccountReset] = useState("");
-  const [errorAccountReset, setErrorAccountReset] = useState(false);
   const [fieldFilled, setFieldFilled] = useState(false);
+  const [errorInput, setErrorInput] = useState(false);
 
   const [spinnerImage, setSpinnerImage] = useState("/images/InicioDeSesión/step=1.svg");
   const [spinnerClass, setSpinnerClass] = useState([
@@ -28,33 +29,15 @@ function RecuperarCuenta() {
     { src: "/images/InicioDeSesión/step=4.svg", className: "spinner-custom spinner4" },
   ];
 
-  const handleChangeSpinnerImage = (event) => {
-    event.preventDefault();
-
-    setShowSpinner(true);
-    setShowOverlay(true);
-
-    setTimeout(() => {
-      const currentIndex = spinnerImages.findIndex(
-        (spinner) => spinner.src === spinnerImage
-      );
-
-      const nextIndex = (currentIndex + 1) % spinnerImages.length;
-
-      setSpinnerImage(spinnerImages[nextIndex].src);
-      setSpinnerClass(spinnerImages[nextIndex].className);
-
-      setTimeout(() => {
-        setShowSpinner(false);
-        setShowPopUp(true);
-      }, 1000);
-    }, 2000);
-  };
-
   const navigate = useNavigate();
 
   const handleChangeInput = (event) => {
     setAccountReset(event.target.value);
+    if(event.target.value === "") {
+      setErrorInput(true)
+    } else {
+      setErrorInput(false)
+    }
     handleFieldsFilled();
   };
 
@@ -68,25 +51,45 @@ function RecuperarCuenta() {
     }
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!errorInput) {
+      setShowSpinner(true);
+      setShowOverlay(true);
+  
+      setTimeout(() => {
+        const currentIndex = spinnerImages.findIndex(
+          (spinner) => spinner.src === spinnerImage
+        );
+  
+        const nextIndex = (currentIndex + 1) % spinnerImages.length;
+  
+        setSpinnerImage(spinnerImages[nextIndex].src);
+        setSpinnerClass(spinnerImages[nextIndex].className);
+  
+        setTimeout(() => {
+          setShowSpinner(false);
+          setShowPopUp(true);
+        }, 1000);
+      }, 2000);
+    }
+  };
   return (
     <div className="form-reset-account-container">
       {showOverlay && <div className="overlay-custom" />}
       <form className="form-reset-wrapper">
         <TitleArrow onClick={handleClickBackLogIn} title="Recuperar Cuenta" />
-        <FieldsetEmailUser value={accountReset} onChange={handleChangeInput}>
+        <FieldsetEmailUser value={accountReset} onChange={handleChangeInput} errorInput={errorInput}>
           <span className="recuperar-cuenta">
             Deberás poder ingresar al e-mail de la cuenta para poder
             recuperarla.
           </span>
         </FieldsetEmailUser>
-
-        {errorAccountReset && (
-          <span style={{ color: "red" }}>Campo requerido</span>
-        )}
         <Button
           className="btn-reset-account"
+          type="submit"
           fieldsFilled={fieldFilled}
-          onClick={handleChangeSpinnerImage}
+          onClick={handleSubmit}
           btnLabel="Continuar"
         />
         {showSpinner && (
@@ -101,7 +104,7 @@ function RecuperarCuenta() {
         {showPopup && (
           <div className="popup">
             <p>
-              Te enviamos mensaje a <span>mara.perez@gmail.com </span>con un
+              Te enviamos mensaje a <span>@{accountReset }</span> con un
               link verificador.
             </p>
             <img src={planeSendReset} alt="" />
@@ -109,7 +112,7 @@ function RecuperarCuenta() {
               Para recuperar tu cuenta debes ingresar al mismo y luego seguir
               las instrucciones.
             </p>
-            <button>Entendido</button>
+         <Link to={"/"}><button>Entendido</button></Link>
           </div>
       
         )}

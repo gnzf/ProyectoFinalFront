@@ -102,13 +102,14 @@ function InicioDeSesion() {
       setSpinnerClass(spinnerImages[nextIndex].className);
       setTimeout(() => {
         setShowSpinner(false);
+        setShowOverlay(false);
       }, 1000);
     }, 2000);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const user = { identifier: inputValue, password: password };
+    const user = { user_email: inputValue, password: password };
     if (!errorInput && !errorPassword) {
       await loginUsuario(user)
         .then((resultado) => {
