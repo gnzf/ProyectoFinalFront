@@ -32,7 +32,7 @@ function Carrusel() {
           <Match />
         </div>
         <div className="btn-create">
-          <button className="btn-create-playlists">Crear Playlist</button>
+          <button className="btn-create-playlists"><Link to={"/playlistGenerada"}>Crear Playlist</Link></button>
         </div>
       </div>
     </>

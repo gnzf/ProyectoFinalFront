@@ -10,10 +10,12 @@ import { useNavigate } from "react-router";
 function Buscador() {
   const navigate = useNavigate();
   const [isClicked, setIsClicked] = useState(false);
+
   const [canciones, setCanciones] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [redirectingSearcher, setRedirectingSearcher] = useState(false);
+
 
   const handleInputClick = () => {
     setIsClicked(true);
@@ -75,7 +77,6 @@ function Buscador() {
             />
           </div>
         </div>
-
         <div className={`grillas ${isClicked ? "animate-left" : ""}`}>
           {isLoading && <div>Cargando...</div>}
           {error && <div>Error: {error}</div>}
