@@ -75,7 +75,6 @@ function Buscador() {
             />
           </div>
         </div>
-
         <div className={`grillas ${isClicked ? "animate-left" : ""}`}>
           {isLoading && <div>Cargando...</div>}
           {error && <div>Error: {error}</div>}
