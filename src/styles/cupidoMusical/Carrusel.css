@@ -97,3 +97,8 @@
   color: #fdfeff;
   cursor: pointer;
 }
+
+.btn-create-playlists a{
+  text-decoration: none;
+  color: white;
+}

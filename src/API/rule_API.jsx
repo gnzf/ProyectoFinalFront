@@ -9,7 +9,7 @@ const api = axios.create({
 });
 
 //Funcion que intercepta las request
-/* api.interceptors.request.use(
+api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
     if (token && config.headers) {
@@ -20,6 +20,6 @@ const api = axios.create({
   (error) => {
     return Promise.reject(error);
   }
-); */
+);
 
 export default api;
