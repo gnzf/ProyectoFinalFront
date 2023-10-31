@@ -10,7 +10,11 @@ import {
   getMoods,
 } from "../API/rule_canciones";
 import { Link, useNavigate } from "react-router-dom";
-import { addPlaylist, getCancionesPlaylist } from "../API/rule_playlist";
+import {
+  addCancionesPlaylist,
+  addPlaylist,
+  getCancionesPlaylist,
+} from "../API/rule_playlist";
 
 function MusicaContextual() {
   const [ocasion, setOcasion] = useState([]);
@@ -23,6 +27,8 @@ function MusicaContextual() {
   const [actividadResultados, setActividadResultados] = useState([]);
   const [climaResultados, setClimaResultados] = useState([]);
   const [moodsResultados, setMoodsResultados] = useState([]);
+
+  const [userID, setUserID] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,38 +56,52 @@ function MusicaContextual() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const user_id = localStorage.getItem("user_id"); // Obtiene el ID del usuario
+    console.log(token);
+    console.log(user_id);
+    if (token && user_id) {
+      // Actualiza el estado userID con el valor obtenido
+      setUserID(user_id);
+    }
+  }, []);
+
   const handleSubmit = async () => {
-    try {
-      // Primero, crea la playlist
-      const playlistCreateResponse = await addPlaylist({ user_id: user_id});
-  
-      if (playlistCreateResponse.playlist_id) {
-        // Si se creó la playlist con éxito, procede a obtener las canciones
+    if (userID) {
+      try {
         const cancionesResponse = await getCancionesPlaylist({
           actividad: ocasion,
           estadodeanimo: sentimiento,
           clima: climas,
           genero: generos,
         });
-  
+
         console.log(cancionesResponse);
-  
-        // Aquí puedes agregar las canciones a la playlist usando playlistCreateResponse.playlist_id
-        // Asegúrate de implementar esta lógica según tus necesidades
-  
-        alert("Playlist y canciones creadas exitosamente");
-        navigate("/playlistGenerada");
-      } else {
-        // Manejo de errores si no se pudo crear la playlist
-        alert("No se pudo crear la playlist");
+        const userid = localStorage.getItem("user_id");
+        const usuarioId = { user_id: userid };
+        const playlistCreateResponse = await addPlaylist(usuarioId);
+
+        const playlistId = playlistCreateResponse.id_playlist.id_playlist;
+        console.log("ID de la playlist creada:", playlistId);
+
+        cancionesResponse.forEach(async (cancion) => {
+          const songName = cancion.cancion_name;
+          const songsPlaylist = {
+            playlistId: playlistId,
+            cancionName: songName,
+          };
+          console.log("Añadiendo canción a la playlist:", songsPlaylist);
+          await addCancionesPlaylist(songsPlaylist);
+        });
+        navigate("/playlistGenerada")
+      } catch (error) {
+        alert(error);
       }
-    } catch (error) {
-      // Manejo de errores generales
-      alert(error);
+    } else {
+      alert("Debes estar autenticado para crear una playlist");
     }
   };
-  
-  
 
   return (
     <div className="all-musicacontextual-stats">
@@ -151,7 +171,11 @@ function MusicaContextual() {
             />
           ))}
         </div>
-        <button type="submit" onClick={handleSubmit}  className="crear-playlist-musicaContextual">
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className="crear-playlist-musicaContextual"
+        >
           <p>Crear Playlist</p>
         </button>
       </div>

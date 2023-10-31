@@ -5,6 +5,8 @@ export const registrarUsuario = async (user) => {
   return await api
     .post(url, user)
     .then((resultado) => {
+      localStorage.setItem("token", resultado.data.token);
+      localStorage.setItem("user_id", resultado.data.user_id);
       return resultado.data;
     })
     .catch((error) => {

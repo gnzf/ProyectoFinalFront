@@ -13,10 +13,10 @@ export const getCancionesPlaylist = async () => {
       });
   };
 
-export const addPlaylist = async () => {
+export const addPlaylist = async (usuarioId) => {
     let url = "/addPlaylist";
     return await api
-      .post(url)
+      .post(url, usuarioId)
       .then((resultado) => {
         console.log(resultado);
         return resultado.data;
@@ -26,10 +26,10 @@ export const addPlaylist = async () => {
       });
   };
 
-export const addCancionesPlaylist = async () => {
+export const addCancionesPlaylist = async (songsPlaylist) => {
     let url = "/addCancionesPlaylist";
     return await api
-      .post(url)
+      .post(url, songsPlaylist)
       .then((resultado) => {
         console.log(resultado);
         return resultado.data;
