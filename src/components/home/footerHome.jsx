@@ -7,7 +7,6 @@ import userFooter from "../../../public/image/home/perfil/user.svg";
 import { Link } from "react-router-dom";
 
 function FooterHome(props) {
-  let ruta = "perfil";
 
   return (
     <div className={"container-footer-home " + props.ruta}>
