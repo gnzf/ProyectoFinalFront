@@ -9,12 +9,15 @@ function RegistoCrearCuenta() {
   const userEmail = localStorage.getItem("email");
   const [inputPassword, setInputPassword] = useState("");
   const [inputUsername, setInputUsername] = useState("");
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
   const navigate = useNavigate();
+
+  const isButtonOrange = inputUsername.length > 0 && inputPassword.length >= 8 && checkboxChecked;
 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (inputPassword.length > 8) {
+    if (inputPassword.length > 8 && isButtonOrange) {
       await registrarUsuario({ email: userEmail, password: inputPassword , username: inputUsername})
         .then((resultado) => {
           alert(resultado.mensaje);
@@ -27,6 +30,8 @@ function RegistoCrearCuenta() {
       alert("Las credenciales no son correctas"); //esto se manda a un servidor para corroborar las credenciales
     }
 }
+
+
   
 
   return (
@@ -41,23 +46,23 @@ function RegistoCrearCuenta() {
         </label>
         <div className="password-container">
           <input type="password" value={inputPassword} onChange={(event) =>{ setInputPassword(event.target.value)}} className="password-input" />
-          <button>
             <img
               src="/images/registro/state=closed.svg"
               alt="eye"
               className="closed-eye"
             />
-          </button>
         </div>
         <div className="aclaracion">Deberá contener al menos 8 caracteres.</div>
         <div className="terminosycondiciones-container">
-          <input type="checkbox" className="checkbox" />
+          <input type="checkbox" className="checkbox" onChange={(event) => {
+              setCheckboxChecked(event.target.checked);
+            }}/>
           <p className="terminosycondiciones">
             He leído y acepto <span className="orange-text"> Términos</span>y
             <span className="orange-text"> Condiciones</span>.
           </p>
         </div>
-        <ButtonContinuar></ButtonContinuar>
+        <ButtonContinuar additionalClass={isButtonOrange ? "orange-button" : ""}></ButtonContinuar>
       </form>
     </>
   );

@@ -13,6 +13,8 @@ function Registro() {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+   
     
     if( email !== ""){
       localStorage.setItem("email", email)
@@ -22,8 +24,10 @@ function Registro() {
         alert("Debe ingresar un email correcto")
           
         }
-
   }
+
+  const isButtonOrange = email.length > 0 ;
+
 
   return (
     <div className="registro-container">
@@ -33,7 +37,7 @@ function Registro() {
         <label className="correo-electronico"> Corre electrónico:</label>
         <InputGeneral value={email} onChange={(event) =>{ setEmail(event.target.value)}}/>
         <div className="aclaracion"> Deberás poder confirmarlo luego.</div>
-        <ButtonContinuar></ButtonContinuar>
+        <ButtonContinuar additionalClass={isButtonOrange ? "orange-button" : ""}></ButtonContinuar>
       </form>
     </div>
   );
