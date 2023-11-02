@@ -10,7 +10,7 @@ export const registrarUsuario = async (user) => {
       return resultado.data;
     })
     .catch((error) => {
-      throw error.response.data.error || "Error procesando la solicitud";
+      throw error.response.data.error;
     });
 };
 
@@ -23,7 +23,7 @@ export const loginUsuario = async (user) => {
       return resultado.data;
     })
     .catch((error) => {
-      throw error.response.data.error || "Error procesando la solicitud";
+      throw error.response.data.error;
     });
 };
 
