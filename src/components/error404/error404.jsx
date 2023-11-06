@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../../styles/error404/error404.css";
 
 function Error404() {
@@ -12,9 +13,10 @@ function Error404() {
         <br />
         you were looking for.
       </p>
-      <a className="btn-error" href="">
+      <Link to={"/"} className="btn-error" href="">
         GO BACK
-      </a>
+      </Link>
+    
     </div>
   );
 }

@@ -78,7 +78,7 @@ function RecuperarCuenta() {
     <div className="form-reset-account-container">
       {showOverlay && <div className="overlay-custom" />}
       <form className="form-reset-wrapper">
-        <TitleArrow onClick={handleClickBackLogIn} title="Recuperar Cuenta" />
+        <TitleArrow link={"/login"} onClick={handleClickBackLogIn} title="Recuperar Cuenta" />
         <FieldsetEmailUser value={accountReset} onChange={handleChangeInput} errorInput={errorInput}>
           <span className="recuperar-cuenta">
             Deberás poder ingresar al e-mail de la cuenta para poder

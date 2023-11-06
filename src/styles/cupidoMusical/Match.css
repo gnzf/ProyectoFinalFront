@@ -1,20 +1,22 @@
 .matches {
-  margin-bottom: 100px;
+  margin-bottom: 0.5rem;
 }
 .match {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 30px;
   position: relative;
+  margin: 0 1.5rem;
 }
 .btn-match {
   border: none;
   margin: 10px;
   background-color: transparent;
   position: absolute;
-  bottom: 3rem;
-  left: 10rem;
+  bottom: 17rem;
+  left: 16rem;
   cursor: pointer;
 }
 .match-p {
@@ -23,6 +25,7 @@
   line-height: 24px;
   letter-spacing: 0.5px;
   text-align: center;
+  padding-bottom: 1rem;
 }
 
 .match-music {
@@ -30,3 +33,9 @@
   width: 60px;
   height: 60px;
 }
+
+/* .match-images{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+} */
