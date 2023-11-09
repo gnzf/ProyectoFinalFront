@@ -9,6 +9,16 @@ import { useNavigate } from "react-router";
 
 function Searcher() {
   const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
+  console.log("Token:", token);
+
+  useEffect(() => {
+      if (!token) {
+          navigate("/login");
+      }
+  }, [])
+
   const [arrowClicked, setArrowClicked] = useState(false);
   const [resultados, setResultados] = useState([]);
   const [searchMusic, setsearchMusic] = useState("");
@@ -29,7 +39,7 @@ function Searcher() {
         const resultado = await getCanciones();
         setResultados(resultado);
       } catch (error) {
-        alert("Error al obtener los datos.");
+        alert(error);
       }
     };
 

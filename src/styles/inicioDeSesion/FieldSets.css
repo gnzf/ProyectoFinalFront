@@ -55,7 +55,7 @@
   justify-content: flex-end;
   align-items: center;
   align-self: stretch;
-  margin: 10px;
+/*   margin: 10px; */
   border: none;
   outline: none;
 }
@@ -100,4 +100,11 @@
   font-weight: 500;
   line-height: 18px; /* 150% */
   letter-spacing: 0.5px;
+}
+
+
+@-moz-document url-prefix() {
+  .password-input-login-containe input[type="password"] {
+    font-size: 29px;
+  }
 }

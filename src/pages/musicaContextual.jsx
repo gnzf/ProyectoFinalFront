@@ -4,7 +4,6 @@ import backArrow from "../../public/images/home/leftarrowback.svg";
 import GenerosMC from "../components/musicaContextual/generosMC";
 import {
   getActividades,
-  getCanciones,
   getClimas,
   getGeneros,
   getMoods,
@@ -17,19 +16,71 @@ import {
 } from "../API/rule_playlist";
 
 function MusicaContextual() {
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
+  console.log("Token:", token);
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, []);
+
   const [ocasion, setOcasion] = useState([]);
   const [sentimiento, setSentimiento] = useState([]);
-  const [resultados, setResultados] = useState([]);
   const [climas, setClimas] = useState([]);
-  const [generos, setGeneros] = useState([]);
 
+  const [generosSeleccionados, setGenerosSeleccionados] = useState([]);
+  console.log("Estado generosSeleccionados:", generosSeleccionados);
   const [generoResultados, setGeneroResultados] = useState([]);
   const [actividadResultados, setActividadResultados] = useState([]);
   const [climaResultados, setClimaResultados] = useState([]);
   const [moodsResultados, setMoodsResultados] = useState([]);
-
+  const [cancionesResponse, setCancionesResponse] = useState([]);
+  console.log("Canciones Response:", cancionesResponse);
   const [userID, setUserID] = useState(null);
-  const navigate = useNavigate();
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
+
+  useEffect(() => {
+    // Muestra el pop-up cuando el componente se carga
+    setShowPopup(true);
+    setShowOverlay(true);
+  }, []);
+
+  const handlePopupClose = () => {
+    // Cierra el pop-up y navega a otra página
+    setShowPopup(false);
+    setShowOverlay(false); 
+  };
+
+  const [stepsPopup, setStepsPopup] = useState(0);
+
+  
+  const stepsImages = [
+    "/images/MusicaContextual/step=1 (1).svg",
+    "/images/MusicaContextual/step=2 (1).svg",
+    "/images/MusicaContextual/step=3 (1).svg",
+    "/images/MusicaContextual/step=4 (1).svg",
+    "/images/MusicaContextual/step=5.svg",
+    "/images/MusicaContextual/step=6.svg",
+    "/images/MusicaContextual/step=step7.svg",
+    "/images/MusicaContextual/step=8.svg",
+    "/images/MusicaContextual/step=9.svg",
+  ];
+  
+
+useEffect(() => {
+  const interval = setInterval(() => {
+      setStepsPopup((prevIndex) => (prevIndex + 1) % stepsImages.length);
+  }, 1000);
+
+  return () => {
+      clearInterval(interval); // Limpia el intervalo cuando el componente se desmonta
+  };
+}, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,11 +96,8 @@ function MusicaContextual() {
 
         const moodsResponse = await getMoods();
         setMoodsResultados(moodsResponse);
-
-        const resultado = await getCanciones();
-        setResultados(resultado);
       } catch (error) {
-        alert("Error al obtener los datos.");
+        alert(error);
       }
     };
 
@@ -67,25 +115,56 @@ function MusicaContextual() {
     }
   }, []);
 
+  const handleGeneroSelection = (generoName) => {
+    // Verifica si el género ya está seleccionado
+    if (generosSeleccionados.includes(generoName)) {
+      // Si ya está seleccionado, lo deselecciona
+      setGenerosSeleccionados(
+        generosSeleccionados.filter((genero) => genero !== generoName)
+      );
+    } else {
+      // Si no está seleccionado, lo agrega a la lista de géneros seleccionados
+      setGenerosSeleccionados([...generosSeleccionados, generoName]);
+    }
+  };
+  useEffect(() => {
+    console.log("Canciones Response en efecto:", cancionesResponse);
+  }, [cancionesResponse]);
+
   const handleSubmit = async () => {
     if (userID) {
       try {
-        const cancionesResponse = await getCancionesPlaylist({
+        const valoresSeleccionados = {
           actividad: ocasion,
           estadodeanimo: sentimiento,
           clima: climas,
-          genero: generos,
-        });
+          genero: generosSeleccionados,
+        };
 
-        console.log(cancionesResponse);
+        try {
+          const resultadoFilter = await getCancionesPlaylist(
+            valoresSeleccionados
+          );
+          localStorage.setItem(
+            "cancionesFiltradas",
+            JSON.stringify(resultadoFilter)
+          );
+          setCancionesResponse(resultadoFilter);
+        } catch (error) {
+          alert(error);
+          console.log("ERROR", error);
+        }
+
         const userid = localStorage.getItem("user_id");
         const usuarioId = { user_id: userid };
         const playlistCreateResponse = await addPlaylist(usuarioId);
 
         const playlistId = playlistCreateResponse.id_playlist.id_playlist;
-        console.log("ID de la playlist creada:", playlistId);
 
-        cancionesResponse.forEach(async (cancion) => {
+        const resultadoFilter = await getCancionesPlaylist(
+          valoresSeleccionados
+        );
+        resultadoFilter.forEach(async (cancion) => {
           const songName = cancion.cancion_name;
           const songsPlaylist = {
             playlistId: playlistId,
@@ -94,7 +173,8 @@ function MusicaContextual() {
           console.log("Añadiendo canción a la playlist:", songsPlaylist);
           await addCancionesPlaylist(songsPlaylist);
         });
-        navigate("/playlistGenerada")
+
+        navigate("/playlistGenerada");
       } catch (error) {
         alert(error);
       }
@@ -103,8 +183,19 @@ function MusicaContextual() {
     }
   };
 
+  const handleMatchConfirm = () => {
+    return (
+      ocasion.length > 0 &&
+      sentimiento.length > 0 &&
+      climas.length > 0 &&
+      generosSeleccionados.length >= 1 &&
+      generosSeleccionados.length <= 3
+    );
+  };
+
   return (
     <div className="all-musicacontextual-stats">
+      {showOverlay && <div className="overlay-custom" />}
       <div className="top-musicacontextual">
         <Link to={"/home"}>
           <img src={backArrow} alt="backArrow" />
@@ -167,14 +258,33 @@ function MusicaContextual() {
             <GenerosMC
               generoName={generos.genre_name}
               value={generos}
-              onClick={(e) => setGeneros(e.target.value)}
+              onGeneroSeleccion={handleGeneroSelection}
             />
           ))}
         </div>
+
+        {showPopup && (
+          <div className="popup">
+            <p>Música Contextual</p>
+            <img src={stepsImages[stepsPopup]} alt="" />
+            <p>
+              Llena los campos y crearemos una playlist en base a
+              tus respuestas.
+            </p>
+            <button onClick={handlePopupClose}>Entendido</button>
+            <span>No volver a mostrar</span>
+          </div>
+        )}
+
         <button
           type="submit"
           onClick={handleSubmit}
-          className="crear-playlist-musicaContextual"
+          className={`crear-playlist-musicaContextual ${
+            handleMatchConfirm()
+              ? "enabled-buttonMatch"
+              : "disabled-buttonMatch"
+          }`}
+          disabled={!handleMatchConfirm()}
         >
           <p>Crear Playlist</p>
         </button>

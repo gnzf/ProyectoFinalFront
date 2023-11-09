@@ -7,53 +7,55 @@ import { Link } from "react-router-dom";
 
 function perfil() {
   const [playlist, setPlaylist] = useState([]);
-  const [user, setUser] = useState([]);
+  /*  const [user, setUser] = useState([]); */
+  const [userID, setUserID] = useState(null);
+  const [userPlaylists, setUserPlaylists] = useState([]);
+  const [userName, setUserName] = useState("");
+  console.log("userName es: ", userName);
 
+  console.log("userID antes del segundo useeffect:", userID);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchPlaylist = getPlaylist();
-        const fetchUser = getUsername();
-        const playlistResponse = await fetchPlaylist;
-        const userResponse = await fetchUser;
-        console.log(playlistResponse)
-        console.log(userResponse)
-        setPlaylist(playlistResponse[1]);
-        setUser(userResponse[2]);
+        const usuarioId = localStorage.getItem("user_id");
+        const fetchUser = await getUsername(usuarioId);
+        setUserName(fetchUser);
+        const fetchPlaylist = await getPlaylist(usuarioId);
+        setUserPlaylists(fetchPlaylist);
       } catch (error) {
         alert("Error al obtener los datos.", error);
       }
     };
 
-
-
     fetchData();
   }, []);
-
-
-  if(!playlist || !user){
+/* 
+    if(!userPlaylists|| !userName){
     return <h1>Loading...</h1>
-  }
-
-
+  } */
   return (
     <>
       <div className="container-profile">
-        
         <div className="contenido-profile">
           <img
             className="img-profile"
             src="/image/perfil/Rectangle 2.svg"
             alt="img-profile"
-            />
+          />
           <Link to={"/configuracionPerfil"} className="btn-config-profile">
             <img src="/image/perfil/gear.svg" alt="img-configuration" />
           </Link>
-          <h1 className="name-profile">{user.username}</h1>
-          <p className="nickname">@{user.username}</p>
-          </div>
-    
-      
+          {userName.length > 0 ? (
+            <>
+              {userName.map((user) => (
+                <div key={user.username}>
+                  <h1 className="name-profile">{user.username}</h1>
+                  <p className="nickname">@{user.username}</p>
+                </div>
+              ))}
+            </>
+          ) : null}
+        </div>
 
         <div className="playlist-wrapper">
           <h3 className="title-playlists">Mis Playlists</h3>
@@ -61,16 +63,17 @@ function perfil() {
         </div>
 
         <div className="playlist-section">
-        
-        
-          <Playlists
-            namePlaylists={playlist.name_playlist}
-            nameUsers={playlist.user_id}
-          />
+        {userPlaylists.map((playlists, index) => (
+        <Playlists
+          key={index} 
+          namePlaylists={playlists.name_playlist}
+          nameUsers={playlists.username}
+        />
+      ))}
      
         </div>
       </div>
-        <FooterHome ruta="perfil"/>
+      <FooterHome ruta="perfil" />
     </>
   );
 }

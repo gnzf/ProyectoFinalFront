@@ -1,18 +1,29 @@
-.matches {
+/* .matches {
   margin-bottom: 100px;
-}
+} */
 .match {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
-  position: relative;
+/*   position: relative; */
 }
+
+.match-container-reset {
+  display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: 44px;
+    margin-top: 482px; /*?*/
+}
+
 .btn-match {
   border: none;
   margin: 10px;
   background-color: transparent;
-  position: absolute;
+/*   position: absolute; */
   bottom: 3rem;
   left: 10rem;
   cursor: pointer;
@@ -30,3 +41,13 @@
   width: 60px;
   height: 60px;
 }
+
+.liked-images {
+  display: flex;
+  justify-items: center;
+  margin-left: 3px;
+  margin-right: 20px;
+  margin-top: -30px;
+  width: 121px;
+}
+

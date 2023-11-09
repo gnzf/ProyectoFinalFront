@@ -96,7 +96,8 @@
   display: grid;
   flex: 1 1;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
+  column-gap: 40px;
+/*   gap: 20px; */
   width: 100%;
   padding: 0 40px;
   overflow: auto;

@@ -20,6 +20,7 @@ export const loginUsuario = async (user) => {
     .post(url, user)
     .then((resultado) => {
       localStorage.setItem("token", resultado.data.token);
+      localStorage.setItem("user_id", resultado.data.user_id);
       return resultado.data;
     })
     .catch((error) => {

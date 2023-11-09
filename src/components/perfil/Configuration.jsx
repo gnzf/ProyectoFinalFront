@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
 import "../../styles/perfil/Configuration.css";
 import { logout } from "../../API/rule_auth";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function Configuration() {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  console.log("Token:", token);
+
+  useEffect(() => {
+      if (!token) {
+          navigate("/login");
+      }
+  }, [])
 
   const logoutfunction = () => {
     logout();

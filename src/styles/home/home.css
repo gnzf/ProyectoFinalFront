@@ -27,7 +27,7 @@
 .container-main-home{
     display: flex;
     flex-direction: column;
-    height: 69vh;
+    height: 73vh;
     padding: 0 1.5rem;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .container-options-home .container-imagenhome-animation1{
-    background: rgba(38, 38, 46, 1);
+ /*    background: rgba(38, 38, 46, 1); */
     width: 100px;
     height: 80px;
     border-radius: 0 0 0 2rem;
