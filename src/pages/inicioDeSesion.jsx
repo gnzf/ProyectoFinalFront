@@ -6,7 +6,7 @@ import TitleArrow from "../components/iniciodesesion/TitleArrow";
 import {
   FieldsetEmailUser,
   FieldSetPassword,
-} from "../components/InicioDeSesion/Fieldsets";
+} from "../components/iniciodesesion/Fieldsets";
 import Button from "../components/InicioDeSesion/Button";
 import {loginUsuario} from "../API/rule_auth"
 
