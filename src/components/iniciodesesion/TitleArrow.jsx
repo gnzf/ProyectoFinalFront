@@ -1,6 +1,6 @@
 import React from "react";
 import leftArrow from "../../../public/images/InicioDeSesión/position=left.svg"
-import "../../styles/InicioDeSesion/TitleArrow.css"
+import "../../styles/inicioDeSesion/TitleArrow.css"
 import { Link } from "react-router-dom";
 
 function TitleArrow(props) {
