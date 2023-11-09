@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/InicioDeSesion/RecuperarCuenta.css";
+import "../styles/inicioDeSesion/RecuperarCuenta.css";
 import planeSendReset from "../../public/images/InicioDeSesión/paper-plane.svg";
-import TitleArrow from "../components/InicioDeSesion/TitleArrow";
-import {FieldsetEmailUser} from "../components/InicioDeSesion/Fieldsets";
-import Button from "../components/InicioDeSesion/Button";
+import TitleArrow from "../components/iniciodesesion/TitleArrow";
+import {FieldsetEmailUser} from "../components/iniciodesesion/Fieldsets";
+import Button from "../components/iniciodesesion/Button";
 import { Link } from "react-router-dom";
 
 function RecuperarCuenta() {
