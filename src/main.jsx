@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import InicioDeSesion from './pages/inicioDeSesion'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import InicioDeApp from "./pages/iniciodeapp";
+import InicioDeApp from "./pages/inicioDeApp";
 import Carrusel from "./components/cupidomusical/Carrusel";
 import PerfilUsuario from "./pages/perfil";
 import Configuration from "./components/perfil/Configuration";
