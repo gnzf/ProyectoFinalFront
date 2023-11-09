@@ -1,7 +1,7 @@
 import api from "./rule_API";
 
-export const getPlaylist = async () => {
-  let url = "/playlistUsuario";
+export const getPlaylist = async (usuarioId) => {
+  let url = `/playlistUsuario?usuarioId=${usuarioId}`;
   return await api
     .get(url)
     .then((resultado) => {
@@ -13,8 +13,8 @@ export const getPlaylist = async () => {
     });
 };
 
-export const getUsername = async () => {
-  let url = "/username";
+export const getUsername = async (usuarioId) => {
+  let url = `/username?usuarioId=${usuarioId}`;
   return await api
     .get(url)
     .then((resultado) => {

@@ -1,30 +1,30 @@
-import React from "react";
 import "../../styles/cupidoMusical/Match.css";
 
-function Match({ matches, resetMatches }) {
-  const handleResetClick = () => {
-    resetMatches();
-  };
+function Match({onPrev, likedImages}) {
 
   return (
-    <>
-    <p className="match-p">Matches actuales:</p>
-          <button className="btn-match" onClick={handleResetClick}>
-              <img src="/image/cupidoMusical/recarga.svg" alt="" />
-          </button>
     <div className="match">
-      <div className="match-images">
-        {matches.map((match, index) => (
+      <div className="match-container-reset">
+      <p className="match-p">Matches actuales:</p>
+      <button className="btn-match" onClick={onPrev}>
+        <img src="/image/cupidoMusical/recarga.svg" alt="" />
+      </button>
+      </div>
+      <div className="liked-images">
+        {likedImages.map((image, index) => (
           <img
             key={index}
             className="match-music"
-            src={`/image/playlists/Rockeando.jpg`}
+            src={image.image_artist}
             alt=""
+            style={{
+              zIndex: likedImages.length + index,
+              transform: `translateX(-${index * 50}px)` // Ajusta el espaciado vertical
+            }}
           />
         ))}
       </div>
     </div>
-    </>
   );
 }
 

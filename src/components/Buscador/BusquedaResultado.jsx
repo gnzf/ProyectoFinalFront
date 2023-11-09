@@ -23,7 +23,7 @@ function BusquedaResultado(props) {
       </div>
       {props.result?.map((canciones) =>
       <CardSong
-        imgCardAlbum={vengeance}
+        imgCardAlbum={canciones.cancion_imagen}
         title={canciones.cancion_name}
         artistName={canciones.name_artist}
       />)}

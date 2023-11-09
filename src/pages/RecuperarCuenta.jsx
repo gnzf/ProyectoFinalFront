@@ -107,7 +107,7 @@ function RecuperarCuenta() {
               Te enviamos mensaje a <span>@{accountReset }</span> con un
               link verificador.
             </p>
-            <img src={planeSendReset} alt="" />
+            <img className="poopup-reset" src={planeSendReset} alt="" />
             <p>
               Para recuperar tu cuenta debes ingresar al mismo y luego seguir
               las instrucciones.

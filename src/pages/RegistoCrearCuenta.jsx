@@ -4,16 +4,22 @@ import "../styles/registro/second page/RegistroCrearCuenta.css";
 import ButtonContinuar from "../components/registro/first page/ButtonContinuar";
 import { registrarUsuario } from "../API/rule_auth";
 import { useNavigate } from 'react-router-dom';
+import eyeClosed from "../../public/images/registro/state=closed.svg";
+import eyeOpen from "../../public/images/registro/state=open.svg";
 
 function RegistoCrearCuenta() {
   const userEmail = localStorage.getItem("email");
   const [inputPassword, setInputPassword] = useState("");
   const [inputUsername, setInputUsername] = useState("");
   const [checkboxChecked, setCheckboxChecked] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const isButtonOrange = inputUsername.length > 0 && inputPassword.length >= 8 && checkboxChecked;
 
+  const passwordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,11 +51,11 @@ function RegistoCrearCuenta() {
           Contraseña:
         </label>
         <div className="password-container">
-          <input type="password" value={inputPassword} onChange={(event) =>{ setInputPassword(event.target.value)}} className="password-input" />
+          <input type={showPassword ? "text" : "password"} value={inputPassword} onChange={(event) =>{ setInputPassword(event.target.value)}} className="password-input" />
             <img
-              src="/images/registro/state=closed.svg"
               alt="eye"
               className="closed-eye"
+              src={showPassword ? eyeOpen : eyeClosed} onClick={passwordVisibility}
             />
         </div>
         <div className="aclaracion">Deberá contener al menos 8 caracteres.</div>

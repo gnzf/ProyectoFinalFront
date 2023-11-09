@@ -9,6 +9,16 @@ import { useNavigate } from "react-router";
 
 function Buscador() {
   const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
+  console.log("Token:", token);
+
+  useEffect(() => {
+      if (!token) {
+          navigate("/login");
+      }
+  }, [])
+
   const [isClicked, setIsClicked] = useState(false);
   const [canciones, setCanciones] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +36,7 @@ function Buscador() {
         const resultado = await getCanciones();
         setCanciones(resultado);
       } catch (error) {
-        alert("Error al obtener los datos.");
+        alert(error);
       }
     };
 
@@ -80,9 +90,9 @@ function Buscador() {
           {error && <div>Error: {error}</div>}
           {canciones && (
             <div className="grillaAlbums">
-              {canciones.map((canciones) => (
+              {canciones.slice(0, 20).map((canciones) => (
                 <GrillaAlbum
-                  img={FlowersMiley}
+                  img={canciones.cancion_imagen}
                   title={canciones.cancion_name}
                   artistName={canciones.name_artist}
                 />

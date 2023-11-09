@@ -1,75 +1,137 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "../styles/home/playlistGenerada.css";
-import FooterHome from '../components/home/footerHome';
-import Reproducir from '../components/playlistgenerada/reproducir.jsx';
-import AllSongs from '../components/playlistgenerada/AllSongs';
-import CaratulaPlaylist from '../components/playlistgenerada/CaratulaPlaylist';
-import { getCanciones } from '../API/rule_canciones';
-import { Link, useLocation } from 'react-router-dom';
+import FooterHome from "../components/home/footerHome";
+import Reproducir from "../components/playlistgenerada/reproducir.jsx";
+import AllSongs from "../components/playlistgenerada/AllSongs";
+import CaratulaPlaylist from "../components/playlistgenerada/CaratulaPlaylist";
+import { getCanciones } from "../API/rule_canciones";
+import { Link, useNavigate} from "react-router-dom";
+import {
+  cancionesPlaylistGenerada,
+  totalDurationPlaylistGenerada,
+} from "../API/rule_playlist.jsx";
 
 function PlaylistGenerada() {
-  const [resultados, setResultados] = useState([]);
-  const location = useLocation();
-  const currentMatches = location.state?.currentMatches || [];
+  const navigate = useNavigate();
 
-  console.log('Datos de currentMatches en PlaylistGenerada:', currentMatches);
+  const token = localStorage.getItem("token");
+  console.log("Token:", token);
+
   useEffect(() => {
+      if (!token) {
+          navigate("/login");
+      }
+  }, [])
+
+
+  const [arrowClicked, setArrowClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const [resultados, setResultados] = useState([]);
+  console.log("state resultados: ", resultados);
+  const [totalDuration, setTotalDuration] = useState([]);
+  const [letra, setLetra] = useState("");
+  const [buscar, setBuscar] = useState(false);
+  /*   const cancionesFiltradas = JSON.parse(localStorage.getItem("cancionesFiltradas")); */
+  const [userID, setUserID] = useState(null);
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const user_id = localStorage.getItem("user_id"); // Obtiene el ID del usuario
+    console.log(token);
+    console.log(user_id);
+    if (token && user_id) {
+      setUserID(user_id);
+      console.log("userId antes de la solicitud:", user_id);
+    }
+  }, [userID]);
+  console.log("userID antes del segundo useeffect:", userID);
+
+  useEffect(() => {
+    console.log("userID antes de fetch data:", userID);
     const fetchData = async () => {
+      console.log("userID despues de fetch data:", userID);
+
       try {
-        const resultado = await getCanciones();
+        const usuarioId = localStorage.getItem("user_id");
+        console.log("Realizando solicitud de datos...");
+        const resultado = await cancionesPlaylistGenerada(usuarioId);
+        console.log("Datos recibidos:", resultado);
         setResultados(resultado);
-        console.log(`este es tu resultado${resultado}`)
+        console.log("Estado actualizado:", resultados);
+        const totalDuration = await totalDurationPlaylistGenerada(usuarioId);
+        setTotalDuration(totalDuration);
+        console.log("totalDuration despues del set: ", totalDuration);
       } catch (error) {
-        alert("Error al obtener los datos.");
+        console.error("Error al obtener los datos:", error);
+        alert(error);
       }
     };
-
     fetchData();
-  }, []);
+  }, [userID]);
 
-  const filteredResultados = resultados.filter(canciones => currentMatches.includes(canciones.name_artist));
+  const allImages = resultados.map((canciones) => canciones.cancion_imagen); // Array of all images
+  const firstFourImages = allImages.slice(0, 4);
 
-  console.log('filteredResultados:', filteredResultados);
+  const totalDurationInMinutes = Math.floor(totalDuration / 60);
+  const totalDurationInSeconds = totalDuration % 60;
+
   return (
-    <div className='playlist-generada-container'>
-      <div className='header-playlist-content'>
-        <Link to={"/musicaContextual"}>
-          <img src="/images/home/leftarrowback.svg" alt="Volver" />
-        </Link>
-        <div className='text-playlist-header'>
+    <div className="playlist-generada-container">
+      <div className="header-playlist-content">
+          <img src="/images/home/leftarrowback.svg" onClick={() => navigate("/home")}/>
+        <div className="text-playlist-header">
           <p>Generada del Cupido Musical</p>
           <h4>Playlist Generada</h4>
         </div>
-        <img src="/images/home/right-icon-placeholder.svg" alt="Icono derecha" />
+        <img src="/images/home/right-icon-placeholder.svg" />
       </div>
-      <div className='caratula-playlist-container'>
-        <CaratulaPlaylist />
-      </div>
-      <div className='playlist-generada-main'>
+      {resultados.length > 0 ? (
+        <div className="caratula-playlist-container">
+          <CaratulaPlaylist imagenes={firstFourImages} />
+        </div>
+      ) : (
+        <p>No hay resultados disponibles.</p>
+      )}
+      <div className="playlist-generada-main">
         <div></div>
-        <div className='share-playlist-verified'>
-          <img src="/images/playlistgenerada/logo-small.svg" alt="Logo pequeño" />
-          <img src="/images/playlistgenerada/verified.svg" alt="Verificado" />
-          <img src="/images/playlistgenerada/share.svg" alt="Compartir" />
-          <p>duracion</p>
-          <img src="/images/playlistgenerada/history.svg" alt="Historial" />
+        <div className="share-playlist-verified">
+          <img src="/images/playlistgenerada/logo-small.svg" />
+          <img src="/images/playlistgenerada/verified.svg" />
+          <img src="/images/playlistgenerada/share.svg" />
+          {totalDuration.length > 0 ? (
+            <p>
+              {totalDurationInMinutes}:{totalDurationInSeconds}{" "}
+            </p>
+          ) : (
+            <p>No hay resultados disponibles.</p>
+          )}
+          <img src="/images/playlistgenerada/history.svg" />
         </div>
-        <Reproducir imagen1="/images/playlistgenerada/icon-left-placeholder.svg" imagen2="/images/playlistgenerada/shuffle.svg" imagen3="/images/playlistgenerada/play-btn.svg" />
-        <div className='allSongs-containerall'>
-          {filteredResultados.map(cancion => {
-  return (
-    <AllSongs
-      key={cancion.id}
-      title={cancion.cancion_name}
-      artistName={cancion.name_artist}
-    />
-  );
-})}
-        </div>
+        <Reproducir
+          imagen1="/images/playlistgenerada/icon-left-placeholder.svg"
+          imagen2="/images/playlistgenerada/shuffle.svg"
+          imagen3="/images/playlistgenerada/play-btn.svg"
+        ></Reproducir>
+
+        {resultados.length > 0 ? (
+          <div className="allSongs-containerall">
+            {resultados.map((canciones) => (
+              <AllSongs
+                imagenCover={canciones.cancion_imagen}
+                title={canciones.cancion_name}
+                artistName={canciones.name_artist}
+                duration={canciones.duration}
+              />
+            ))}
+          </div>
+        ) : (
+          <p>No hay resultados disponibles.</p>
+        )}
       </div>
+
       <FooterHome ruta="inicio" />
     </div>
   );
 }
 
 export default PlaylistGenerada;
+

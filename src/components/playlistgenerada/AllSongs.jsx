@@ -4,13 +4,22 @@ import prueba from "../../../public/images/playlistgenerada/image-placeholder.sv
 import optionsSongs from "../../../public/images/playlistgenerada/icon-right-placeholder.svg"
 
 function AllSongs(props) {
+  const formatDuration = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    const formattedDuration = `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
+    return formattedDuration;
+  };
+
+  const durationInMinutes = formatDuration(props.duration);
   return (
     <div className='allSongs-playlists'>
-        <img src="/images/playlistgenerada/image-placeholder.svg" alt='caratula' />
+        <img className="imagen-cover" src={props.imagenCover}alt='caratula' />
         <div className='allSongs-title-playlist'>
             <h5>{props.title}</h5>
             <p>{props.artistName}</p>
         </div>
+        <p className='allsongs-duration'>{durationInMinutes}</p>
         <img src="/images/playlistgenerada/icon-right-placeholder.svg"/>
     </div>
   )

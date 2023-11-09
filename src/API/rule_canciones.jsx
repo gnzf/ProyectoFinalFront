@@ -61,3 +61,16 @@ export const getMoods = async () => {
       throw error.response.data.error || "Error procesando la solicitud";
     });
 };
+
+export const getArtistas = async () => {
+  let url = "/artistasAll";
+  return await api
+    .get(url)
+    .then((resultado) => {
+      console.log(resultado);
+      return resultado.data;
+    })
+    .catch((error) => {
+      throw error.response.data.error || "Error procesando la solicitud";
+    });
+};

@@ -1,22 +1,31 @@
-.matches {
-  margin-bottom: 0.5rem;
-}
+/* .matches {
+  margin-bottom: 100px;
+} */
 .match {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 30px;
-  position: relative;
-  margin: 0 1.5rem;
+/*   position: relative; */
 }
+
+.match-container-reset {
+  display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    gap: 10px;
+    margin-left: 44px;
+    margin-top: 482px; /*?*/
+}
+
 .btn-match {
   border: none;
   margin: 10px;
   background-color: transparent;
-  position: absolute;
-  bottom: 17rem;
-  left: 16rem;
+/*   position: absolute; */
+  bottom: 3rem;
+  left: 10rem;
   cursor: pointer;
 }
 .match-p {
@@ -25,7 +34,6 @@
   line-height: 24px;
   letter-spacing: 0.5px;
   text-align: center;
-  padding-bottom: 1rem;
 }
 
 .match-music {
@@ -34,8 +42,12 @@
   height: 60px;
 }
 
-/* .match-images{
+.liked-images {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
+  justify-items: center;
+  margin-left: 3px;
+  margin-right: 20px;
+  margin-top: -30px;
+  width: 121px;
+}
+

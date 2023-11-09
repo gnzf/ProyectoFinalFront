@@ -4,11 +4,17 @@
   justify-content: space-around;
   padding: 2rem 1rem;
   height: fit-content;
-  background: linear-gradient(
+/*   background: linear-gradient(
     180deg,
     rgba(253, 254, 255, 0) 80%,
     rgba(102, 149, 175, 0.133647) 100%,
     rgba(102, 149, 175, 0.225) 100%
+  ); */
+  background: linear-gradient(
+    180deg,
+    rgba(253, 254, 255, 0) 25%,
+    rgba(255, 142, 10, 0.13) 84.37%,
+    rgba(255, 142, 10, 0.22) 100%
   );
   font-family: Rubik;
 }
@@ -28,8 +34,7 @@
 .container-explorer-home span,
 .container-explorer-footer span,
 .container-explorer-profile span,
-.container-explorer-friends 
-span {
+.container-explorer-friends span {
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
