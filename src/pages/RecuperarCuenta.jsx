@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/InicioDeSesion/RecuperarCuenta.css";
+import "../styles/inicioDeSesion/RecuperarCuenta.css";
 import planeSendReset from "../../public/images/InicioDeSesión/paper-plane.svg";
-import TitleArrow from "../components/InicioDeSesion/TitleArrow";
-import {FieldsetEmailUser} from "../components/InicioDeSesion/Fieldsets";
-import Button from "../components/InicioDeSesion/Button";
+import TitleArrow from "../components/iniciodesesion/TitleArrow";
+import {FieldsetEmailUser} from "../components/iniciodesesion/Fieldsets";
+import Button from "../components/iniciodesesion/Button";
 import { Link } from "react-router-dom";
 
 function RecuperarCuenta() {
@@ -78,7 +78,7 @@ function RecuperarCuenta() {
     <div className="form-reset-account-container">
       {showOverlay && <div className="overlay-custom" />}
       <form className="form-reset-wrapper">
-        <TitleArrow onClick={handleClickBackLogIn} title="Recuperar Cuenta" />
+        <TitleArrow link={"/login"} onClick={handleClickBackLogIn} title="Recuperar Cuenta" />
         <FieldsetEmailUser value={accountReset} onChange={handleChangeInput} errorInput={errorInput}>
           <span className="recuperar-cuenta">
             Deberás poder ingresar al e-mail de la cuenta para poder

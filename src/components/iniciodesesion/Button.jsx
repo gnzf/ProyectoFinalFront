@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/InicioDeSesion/Button.css";
+import "../../styles/inicioDeSesion/Button.css";
 
 function Button(props) {
   return (

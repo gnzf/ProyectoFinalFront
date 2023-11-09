@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import "../../styles/InicioDeSesion/FieldSets.css"
+import "../../styles/inicioDeSesion/FieldSets.css"
 import eyeClosed from "../../../public/images/InicioDeSesión/state=closed.svg";
 import eyeOpen from "../../../public/images/InicioDeSesión/state=open.svg";
 

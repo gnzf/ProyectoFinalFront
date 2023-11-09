@@ -1,13 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/InicioDeSesion/InicioDeSesion.css";
-import TitleArrow from "../components/InicioDeSesion/TitleArrow";
+import "../styles/inicioDeSesion/inicioDeSesion.css";
+import TitleArrow from "../components/iniciodesesion/TitleArrow";
 import {
   FieldsetEmailUser,
   FieldSetPassword,
-} from "../components/InicioDeSesion/Fieldsets";
-import Button from "../components/InicioDeSesion/Button";
+} from "../components/iniciodesesion/Fieldsets";
+import Button from "../components/iniciodesesion/Button";
 import {loginUsuario} from "../API/rule_auth"
 
 function InicioDeSesion() {

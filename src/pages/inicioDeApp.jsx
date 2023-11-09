@@ -1,10 +1,10 @@
-import InicioDeApp from "../components/iniciodeapp/iniciodeapp";
-function iniciodeapp() {
+import Inicio from "../components/iniciodeapp/iniciodeapp";
+function inicioDeApp() {
   return (
     <div>
-      <InicioDeApp></InicioDeApp>
+      <Inicio></Inicio>
     </div>
   );
 }
 
-export default iniciodeapp;
+export default inicioDeApp;
