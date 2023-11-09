@@ -7,7 +7,7 @@ import {
   FieldsetEmailUser,
   FieldSetPassword,
 } from "../components/iniciodesesion/Fieldsets";
-import Button from "../components/InicioDeSesion/Button";
+import Button from "../components/iniciodesesion/Button";
 import {loginUsuario} from "../API/rule_auth"
 
 function InicioDeSesion() {
