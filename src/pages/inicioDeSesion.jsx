@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/inicioDeSesion/inicioDeSesion.css";
-import TitleArrow from "../components/InicioDeSesion/TitleArrow";
+import TitleArrow from "../components/iniciodesesion/TitleArrow";
 import {
   FieldsetEmailUser,
   FieldSetPassword,
