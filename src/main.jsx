@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import InicioDeSesion from './pages/InicioDeSesion'
+import InicioDeSesion from './pages/inicioDeSesion'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import InicioDeApp from "./pages/iniciodeapp";
 import Carrusel from "./components/cupidomusical/Carrusel";
