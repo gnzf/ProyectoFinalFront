@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "../../styles/iniciodeapp/inicioDeApp.css";
 
-function InicioDeApp() {
+function Inicio() {
   return (
     <>
       <div className="container-start">
@@ -49,4 +49,4 @@ function InicioDeApp() {
   );
 }
 
-export default InicioDeApp;
+export default Inicio;
