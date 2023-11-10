@@ -40,13 +40,10 @@
   position: fixed;
   margin-top: 85px;
   display: grid;
- /*  flex: 1 1; */
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 20px;
   width: 90%;
   padding: 0 40px;
-/*   overflow: auto; */
-  /* position: relative; */
 }
 
 .name-music {
@@ -56,17 +53,12 @@
   line-height: 28px;
   letter-spacing: 0.5px;
   text-align: center;
- /*  margin-left: 100px; */
 }
 
 .btn-like-close {
   position: absolute;
   top: 20rem; 
   right: 5rem;
-/* display: flex;
-flex-direction: row;
-margin-left: -94px;
-margin-top: 204px; */
   cursor: pointer;
 }
 
@@ -120,25 +112,12 @@ margin-top: 204px; */
   color: #fdfeff;
 }
 
-/* .popUp-carrusel {
-  width: 240px;
-  height: 228px;
-  flex-shrink: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(253, 254, 255, 0) 25%,
-    rgba(255, 142, 10, 0.13) 75%,
-    rgba(255, 142, 10, 0.22) 100%
-  );
-} */
-
 .popUp-carrusel img {
   width: 80px;
   height: 80px;
   flex-shrink: 0;
   margin: 74px 80px;
 }
-
 
 .playlist-carrusel {
   transition: transform 0.3s ease;
@@ -151,11 +130,9 @@ margin-top: 204px; */
 
 .img-playlists-carousel {
   object-fit: cover; 
-  /*   flex: 1 1; */
-  /*   width: 100%; */
   width: 272px;
   height: 272px;
-    border-radius: 1% 20%;
+  border-radius: 1% 20%;
 }
 
 .current-image img {
@@ -168,16 +145,15 @@ margin-top: 204px; */
 }
 
 .current-image p {
- margin-top: 50px; /* Oculta el elemento p en las clases "next" y "following" */
+ margin-top: 50px; 
 }
 /* Estilos para las siguientes imágenes */
 
 .next-image p, .next-next-image p, .following-image p {
-  display: none; /* Oculta el elemento p en las clases "next" y "following" */
+  display: none; 
 }
 
 .next-image {
-/*   overflow: hidden; */
   opacity: 0.10;
   width: 272px;
   margin-left: 70px; 
@@ -187,7 +163,6 @@ margin-top: 204px; */
 }
 
 .next-next-image {
-/*   overflow: hidden; */
   width: 272px;
   opacity: 0.10;
   margin-left: 150px; 
@@ -197,12 +172,10 @@ margin-top: 204px; */
 }
 
 .following-image{
-/*   overflow: hidden; */
  display: none;
 }
 
 .carrusel-container {
   touch-action: pan-y; /* Deshabilita el desplazamiento vertical, pero permite el desplazamiento horizontal */
   overflow-x: hidden; /* Oculta el desplazamiento horizontal */
- /*  white-space: nowrap; */ /* Asegura que los elementos del carrusel estén en una línea horizontal */
 }

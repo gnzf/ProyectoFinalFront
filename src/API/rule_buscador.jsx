@@ -5,7 +5,6 @@ export const getCancionesBuscador = async () => {
   return await api
     .get(url)
     .then((resultado) => {
-      console.log(resultado);
       return resultado.data;
     })
     .catch((error) => {

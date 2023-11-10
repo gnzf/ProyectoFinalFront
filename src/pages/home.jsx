@@ -9,7 +9,6 @@ function Home() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
-  console.log("Token:", token);
 
   useEffect(() => {
     if (!token) {
@@ -53,7 +52,7 @@ function Home() {
     }, 1200);
 
     return () => {
-      clearInterval(interval); // Limpia el intervalo cuando el componente se desmonta
+      clearInterval(interval); 
     };
   }, []);
 

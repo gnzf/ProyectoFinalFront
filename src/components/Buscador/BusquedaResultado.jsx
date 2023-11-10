@@ -1,7 +1,6 @@
 import SortBtn from "./SortBtn";
 import CardArtista from "./CardArtista";
 import PanicDisco from "../../../public/images/Buscador/image-placeholder (9).svg";
-import vengeance from "../../../public/images/Buscador/image-placeholder (10).svg";
 import "../../styles/Buscador/BusquedaResultado.css";
 import CardSong from "./CardSong";
 

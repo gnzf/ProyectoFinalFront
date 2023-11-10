@@ -4,14 +4,12 @@ import SearchBar from "../components/Buscador/SearchBar";
 import BusquedaReciente from "../components/Buscador/BusquedaReciente";
 import BusquedaResultado from "../components/Buscador/BusquedaResultado";
 import { getCanciones } from "../API/rule_canciones";
-/* import "../styles/Buscador/BusquedaResultado.css"; */
 import { useNavigate } from "react-router";
 
 function Searcher() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
-  console.log("Token:", token);
 
   useEffect(() => {
       if (!token) {

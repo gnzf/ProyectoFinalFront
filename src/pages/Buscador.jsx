@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "../styles/Buscador/Buscador.css";
 import SearchBar from "../components/Buscador/SearchBar";
 import GrillaAlbum from "../components/Buscador/GrillaAlbum";
-import FlowersMiley from "../../public/images/image-placeholder.svg";
 import { getCanciones } from "../API/rule_canciones";
 import FooterHome from "../components/home/footerHome";
 import { useNavigate } from "react-router";
@@ -11,7 +10,6 @@ function Buscador() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
-  console.log("Token:", token);
 
   useEffect(() => {
       if (!token) {

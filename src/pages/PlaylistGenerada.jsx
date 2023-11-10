@@ -4,8 +4,7 @@ import FooterHome from "../components/home/footerHome";
 import Reproducir from "../components/playlistgenerada/reproducir.jsx";
 import AllSongs from "../components/playlistgenerada/AllSongs";
 import CaratulaPlaylist from "../components/playlistgenerada/CaratulaPlaylist";
-import { getCanciones } from "../API/rule_canciones";
-import { Link, useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   cancionesPlaylistGenerada,
   totalDurationPlaylistGenerada,
@@ -15,7 +14,6 @@ function PlaylistGenerada() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
-  console.log("Token:", token);
 
   useEffect(() => {
       if (!token) {
@@ -23,52 +21,34 @@ function PlaylistGenerada() {
       }
   }, [])
 
-
-  const [arrowClicked, setArrowClicked] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
   const [resultados, setResultados] = useState([]);
-  console.log("state resultados: ", resultados);
   const [totalDuration, setTotalDuration] = useState([]);
-  const [letra, setLetra] = useState("");
-  const [buscar, setBuscar] = useState(false);
-  /*   const cancionesFiltradas = JSON.parse(localStorage.getItem("cancionesFiltradas")); */
   const [userID, setUserID] = useState(null);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const user_id = localStorage.getItem("user_id"); // Obtiene el ID del usuario
-    console.log(token);
-    console.log(user_id);
+    const user_id = localStorage.getItem("user_id"); 
     if (token && user_id) {
       setUserID(user_id);
-      console.log("userId antes de la solicitud:", user_id);
     }
   }, [userID]);
-  console.log("userID antes del segundo useeffect:", userID);
 
   useEffect(() => {
-    console.log("userID antes de fetch data:", userID);
     const fetchData = async () => {
-      console.log("userID despues de fetch data:", userID);
-
       try {
         const usuarioId = localStorage.getItem("user_id");
-        console.log("Realizando solicitud de datos...");
         const resultado = await cancionesPlaylistGenerada(usuarioId);
-        console.log("Datos recibidos:", resultado);
         setResultados(resultado);
-        console.log("Estado actualizado:", resultados);
         const totalDuration = await totalDurationPlaylistGenerada(usuarioId);
         setTotalDuration(totalDuration);
-        console.log("totalDuration despues del set: ", totalDuration);
       } catch (error) {
-        console.error("Error al obtener los datos:", error);
         alert(error);
       }
     };
     fetchData();
   }, [userID]);
 
-  const allImages = resultados.map((canciones) => canciones.cancion_imagen); // Array of all images
+  const allImages = resultados.map((canciones) => canciones.cancion_imagen); 
   const firstFourImages = allImages.slice(0, 4);
 
   const totalDurationInMinutes = Math.floor(totalDuration / 60);

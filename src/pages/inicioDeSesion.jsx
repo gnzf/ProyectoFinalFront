@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/inicioDeSesion/inicioDeSesion.css";
 import TitleArrow from "../components/iniciodesesion/TitleArrow";
@@ -12,8 +12,6 @@ import {loginUsuario} from "../API/rule_auth"
 
 function InicioDeSesion() {
   const [inputValue, setInputValue] = useState("");
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorPassword, setErrorPassword] = useState(false);
   const [errorInput, setErrorInput] = useState(false);
@@ -51,14 +49,6 @@ function InicioDeSesion() {
 
   const handleChangeInput = (event) => {
     setInputValue(event.target.value);
-
-    /* if (/^\S+@\S+\.\S+$/.test(event.target.value)) {
-      setEmail(inputValue);
-      setUserName("");
-    } else {
-      setUserName(inputValue);
-      setEmail("");
-    } */
     if (event.target.value.length === 0){
       setErrorInput(true);
     } else {

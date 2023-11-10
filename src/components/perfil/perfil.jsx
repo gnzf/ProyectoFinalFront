@@ -6,14 +6,9 @@ import { getPlaylist, getUsername } from "../../API/rule_usuarios";
 import { Link } from "react-router-dom";
 
 function perfil() {
-  const [playlist, setPlaylist] = useState([]);
-  /*  const [user, setUser] = useState([]); */
-  const [userID, setUserID] = useState(null);
   const [userPlaylists, setUserPlaylists] = useState([]);
   const [userName, setUserName] = useState("");
-  console.log("userName es: ", userName);
 
-  console.log("userID antes del segundo useeffect:", userID);
   useEffect(() => {
     const fetchData = async () => {
       try {

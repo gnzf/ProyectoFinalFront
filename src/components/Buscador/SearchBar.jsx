@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import search from "../../../public/images/Buscador/style=outline, state=inactive.svg";
 import leftArrow from "../../../public/images/Buscador/position=left.svg";
 import borrar from "../../../public/images/Buscador/icon-right-placeholder.svg";

@@ -84,7 +84,6 @@
   margin-left: 16px;
   margin-right: 16px;
   height: 58%;
-/*   margin-top: 24px; */
 }
 
 .grillaAlbums {
@@ -92,8 +91,6 @@
   flex-wrap: wrap;
   gap: 16px;
   justify-content: center;
-/*   height: 55vh; */
-/*   height: 50vh; */
   overflow: auto;
 }
 
@@ -102,7 +99,6 @@
 .card-busqueda-reciente {
   display: flex;
   align-items: center;
-  /* width: 320px; */
   height: 48px;
   gap: 12px;
   margin: 5px 24px;
@@ -118,12 +114,11 @@
   width: 218px;
   margin-left: 15px;
   display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: flex-start;
-flex: 1 0 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1 0 0;
 }
-
 
 .card-busqueda-reciente p,
 li {
@@ -174,7 +169,6 @@ li {
   margin-top: -12px;
 }
 
-
 /*ANIMACIONES*/
 
 .animate-left {
@@ -189,14 +183,13 @@ li {
   transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
-
- @keyframes animateUp {
+@keyframes animateUp {
   0% {
     transform: translateY(0);
     opacity: 1;
   }
   100% {
-    transform: translateY(-50px); 
+    transform: translateY(-50px);
     opacity: 1;
   }
 }
@@ -204,7 +197,6 @@ li {
 .animate-up {
   animation: animateUp 2s ease 1s forwards;
 }
-
 
 @keyframes slideInRight {
   0% {
@@ -238,7 +230,6 @@ li {
   opacity: 1;
 }
 
-
 @keyframes moveDown {
   from {
     transform: translateY(0);
@@ -253,7 +244,7 @@ li {
 }
 
 @media (min-width: 390px) {
-  .grillas{
+  .grillas {
     height: 60%;
   }
   .footer-buscador {

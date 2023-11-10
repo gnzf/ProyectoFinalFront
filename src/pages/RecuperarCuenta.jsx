@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/inicioDeSesion/RecuperarCuenta.css";
 import planeSendReset from "../../public/images/InicioDeSesión/paper-plane.svg";

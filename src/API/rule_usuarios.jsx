@@ -5,7 +5,6 @@ export const getPlaylist = async (usuarioId) => {
   return await api
     .get(url)
     .then((resultado) => {
-      console.log(resultado);
       return resultado.data;
     })
     .catch((error) => {
@@ -18,7 +17,6 @@ export const getUsername = async (usuarioId) => {
   return await api
     .get(url)
     .then((resultado) => {
-      console.log(resultado);
       return resultado.data;
     })
     .catch((error) => {

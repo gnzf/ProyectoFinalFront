@@ -5,7 +5,6 @@ export const getCanciones = async () => {
   return await api
     .get(url)
     .then((resultado) => {
-      console.log(resultado);
       return resultado.data;
     })
     .catch((error) => {
@@ -18,7 +17,6 @@ export const getGeneros = async () => {
   return await api
     .get(url)
     .then((resultado) => {
-      console.log(resultado);
       return resultado.data;
     })
     .catch((error) => {
@@ -30,7 +28,6 @@ export const getActividades = async () => {
   return await api
     .get(url)
     .then((resultado) => {
-      console.log(resultado);
       return resultado.data;
     })
     .catch((error) => {
@@ -42,7 +39,6 @@ export const getClimas = async () => {
   return await api
     .get(url)
     .then((resultado) => {
-      console.log(resultado);
       return resultado.data;
     })
     .catch((error) => {
@@ -54,7 +50,6 @@ export const getMoods = async () => {
   return await api
     .get(url)
     .then((resultado) => {
-      console.log(resultado);
       return resultado.data;
     })
     .catch((error) => {
@@ -67,7 +62,6 @@ export const getArtistas = async () => {
   return await api
     .get(url)
     .then((resultado) => {
-      console.log(resultado);
       return resultado.data;
     })
     .catch((error) => {

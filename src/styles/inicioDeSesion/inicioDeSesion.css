@@ -15,7 +15,7 @@ p {
   font-family: "Rubik";
 }
 
-.login-container h1 {   /*mas especifica general h1 header custom*/ 
+.login-container h1 {  
   overflow: hidden;
   color: var(--medios-tonos-gris-5, #26262E);
   align-self: stretch;
@@ -88,18 +88,6 @@ p {
 .spinner4{
   animation-timing-function: ease-in;
 }
-
-/* general*/
-/* .overlay{              
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 3;
-  background-color: rgba(0,0,0,0.5);
-} */
-
 
 @media (max-width: 768px) {
   .form-login-wrapper{
