@@ -16,8 +16,6 @@ function Carrusel() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
-  console.log("Token:", token);
-
   useEffect(() => {
       if (!token) {
           navigate("/login");
@@ -25,13 +23,10 @@ function Carrusel() {
   }, [])
 
   const [resultados, setResultados] = useState([]);
-  console.log("state resultados: ", resultados);
   const [currentImage, setCurrentImage] = useState(0);
   const [likedImages, setLikedImages] = useState([]);
   const [artistFav, setArtistFav] = useState([]);
   const [artistsSongs, setArtistSongs] = useState([]);
-  console.log("artist fav: ", artistFav);
-  console.log("artists songs: ", artistsSongs);
   const [showPopup, setShowPopup] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
 
