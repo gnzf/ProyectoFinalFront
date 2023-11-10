@@ -14,7 +14,7 @@ function Carrusel() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
-
+  
   useEffect(() => {
       if (!token) {
           navigate("/login");
