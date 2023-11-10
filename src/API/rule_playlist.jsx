@@ -15,8 +15,6 @@ export const getCancionesPlaylist = async (valoresSeleccionados) => {
   return await api
     .get(fullUrl)
     .then((resultado) => {
-      console.log("Resultado", resultado);
-      console.log("valoresSeleccionador", valoresSeleccionados);
       return resultado.data;
     })
     .catch((error) => {
@@ -28,7 +26,6 @@ export const addPlaylist = async (usuarioId) => {
     return await api
       .post(url, usuarioId)
       .then((resultado) => {
-        console.log(resultado);
         return resultado.data;
       })
       .catch((error) => {
@@ -41,7 +38,6 @@ export const addCancionesPlaylist = async (songsPlaylist) => {
     return await api
       .post(url, songsPlaylist)
       .then((resultado) => {
-        console.log(resultado);
         return resultado.data;
       })
       .catch((error) => {
@@ -54,7 +50,6 @@ export const addCancionesPlaylist = async (songsPlaylist) => {
     return await api
       .get(url)
       .then((resultado) => {
-        console.log(resultado);
         return resultado.data;
       })
       .catch((error) => {
@@ -68,7 +63,6 @@ export const addCancionesPlaylist = async (songsPlaylist) => {
     return await api
       .get(url)
       .then((resultado) => {
-        console.log(resultado);
         return resultado.data;
       })
       .catch((error) => {
@@ -81,7 +75,6 @@ export const addCancionesPlaylist = async (songsPlaylist) => {
     return await api
       .get(url)
       .then((resultado) => {
-        console.log(resultado);
         return resultado.data;
       })
       .catch((error) => {

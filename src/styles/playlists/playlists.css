@@ -13,13 +13,7 @@
 }
 
 .img-playlists {
-/*   aspect-ratio: 1;*/
-/*   object-fit: cover;  */
-/*   flex: 1 1; */
-/*   width: 100%; */
-/* width: 272px;
-height: 272px; */
-height: 164px;
+  height: 164px;
   border-radius: 1% 20%;
 }
 

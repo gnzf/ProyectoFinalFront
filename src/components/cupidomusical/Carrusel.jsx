@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/cupidoMusical/Carrusel.css";
-import Playlists from "../playlists/Playlists";
 import Match from "./Match";
 import { getArtistas } from "../../API/rule_canciones";
 import { useState, useEffect } from "react";
@@ -8,7 +7,6 @@ import {
   addCancionesPlaylist,
   addPlaylist,
   getArtistsSongsFilter,
-  getCancionesPlaylist,
 } from "../../API/rule_playlist";
 import { useRef } from "react";
 
@@ -16,6 +14,7 @@ function Carrusel() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
+  
   useEffect(() => {
       if (!token) {
           navigate("/login");
@@ -36,15 +35,13 @@ function Carrusel() {
   let isSwiping = false;
 
   useEffect(() => {
-    // Muestra el pop-up cuando el componente se carga
     setShowPopup(true);
     setShowOverlay(true);
   }, []);
 
   const handlePopupClose = () => {
-    // Cierra el pop-up y navega a otra página
     setShowPopup(false);
-    setShowOverlay(false); // Reemplaza '/otraPagina' con la URL de tu elección
+    setShowOverlay(false); 
   };
 
 
@@ -73,11 +70,8 @@ useEffect(() => {
     const fetchData = async () => {
       try {
         const resultado = await getArtistas();
-        console.log("Datos recibidos:", resultado);
         setResultados(resultado);
-        console.log("Estado actualizado:", resultados);
       } catch (error) {
-        console.error("Error al obtener los datos:", error);
         alert(error);
       }
     };
@@ -85,25 +79,21 @@ useEffect(() => {
   }, []);
 
   const handleSiguiente = () => {
-    // Verifica si hay más imágenes disponibles
     if (currentImage < resultados.length - 1) {
-      // Avanza a la siguiente imagen incrementando el valor de currentImage
       setCurrentImage(currentImage + 1);
     } else {
-      // Si llegas al final, puedes reiniciar desde la primera imagen
       setCurrentImage(0);
     }
   };
 
   const handlePrevious = () => {
     if (currentImage > 0) {
-      // Obtiene la última imagen que le dio "like"
       const lastLikedImage = likedImages[likedImages.length - 1];
 
-      // Chequea si es la primera imagen que le dio "like
+      // Chequea si es la primera imagen que le dio like
       const isFirstLikedImage = likedImages.length === 1;
 
-      // Agrega la última imagen que le dio "like nuevamente a resultados
+      // Agrega la última imagen que le dio like nuevamente a resultados
       setResultados((prevResultados) => [lastLikedImage, ...prevResultados]);
 
       // Elimina la última imagen que le dio like de likedImages
@@ -113,7 +103,7 @@ useEffect(() => {
         return updatedLikedImages;
       });
 
-      // Elimina de artistFav si es la primera imagen que le dio "like
+      // Elimina de artistFav si es la primera imagen que le dio like
       if (isFirstLikedImage) {
         setArtistFav((prevArtistFav) => {
           const updatedArtistFav = prevArtistFav.filter(
@@ -128,14 +118,11 @@ useEffect(() => {
   };
 
   useEffect(() => {
-    console.log("artistfav", artistFav);
     handleArtistPlaySong();
   }, [artistFav]);
 
   const handleNext = () => {
-    // Verifica si hay más imágenes disponibles
     if (currentImage < resultados.length - 1) {
-      // Avanza a la siguiente imagen incrementando el valor de currentImage
       setCurrentImage(currentImage + 1);
     }
   };
@@ -150,17 +137,8 @@ useEffect(() => {
       if (!likedImages.includes(likedImage)) {
         const artistName = likedImage.name_artist;
 
-        // Actualiza likedImages y artistFav
         setLikedImages([...likedImages, likedImage]);
         setArtistFav([...artistFav, artistName]);
-
-        /*  // Filtra las imágenes para mostrar solo las que no están en likedImages
-        setResultados(resultados.filter((image) => !likedImages.includes(image)));
-  
-        // Asegúrate de que currentImage no exceda el nuevo número de imágenes disponibles
-        if (currentImage >= resultados.length - 1) {
-          setCurrentImage(0); // Reiniciar si estás en la última imagen
-        } */
       }
     }
     handleNext();
@@ -169,19 +147,17 @@ useEffect(() => {
   const handleArtistPlaySong = async () => {
     try {
       if (Array.isArray(artistFav) && artistFav.length > 0) {
-        // artistFav is a non-empty array
         const artistasSeleccionados = {
-          artistName: artistFav, // Join artist names into a comma-separated string
+          artistName: artistFav, 
         };
         const artistaName = artistasSeleccionados.artistName;
         try {
           const resultArtistSongsFilter = await getArtistsSongsFilter(
             artistaName
-          ); // Pass artistName as a string
+          ); 
           setArtistSongs(resultArtistSongsFilter);
-          console.log("Artist Songs: ", resultArtistSongsFilter);
         } catch (error) {
-          console.log("Error in handleArtistSongs: ", error);
+          alert(error)
         }
       } else {
         console.log("No se encontraron los artistas.");
@@ -194,22 +170,16 @@ useEffect(() => {
   const handleArtistMatch = async () => {
     try {
       const userid = localStorage.getItem("user_id");
-      console.log("userId es: ", userid);
       const usuarioId = { user_id: userid };
-      console.log("usuario:", usuarioId);
       const playlistCreateResponse = await addPlaylist(usuarioId);
       const playlistId = playlistCreateResponse.id_playlist.id_playlist;
-      console.log("ID de la playlist creada:", playlistId);
 
       artistsSongs.forEach(async (cancion) => {
         const songName = cancion.cancion_name;
-        console.log("songName", songName);
-        console.log("cancion.artistFav", cancion.cancion_name);
         const songsPlaylist = {
           playlistId: playlistId,
           cancionName: songName,
         };
-        console.log("Añadiendo canción a la playlist:", songsPlaylist);
         await addCancionesPlaylist(songsPlaylist);
       });
 

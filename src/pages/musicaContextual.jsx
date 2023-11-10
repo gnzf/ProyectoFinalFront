@@ -19,7 +19,6 @@ function MusicaContextual() {
   const navigate = useNavigate();
 
   const token = localStorage.getItem("token");
-  console.log("Token:", token);
 
   useEffect(() => {
     if (!token) {
@@ -32,26 +31,22 @@ function MusicaContextual() {
   const [climas, setClimas] = useState([]);
 
   const [generosSeleccionados, setGenerosSeleccionados] = useState([]);
-  console.log("Estado generosSeleccionados:", generosSeleccionados);
   const [generoResultados, setGeneroResultados] = useState([]);
   const [actividadResultados, setActividadResultados] = useState([]);
   const [climaResultados, setClimaResultados] = useState([]);
   const [moodsResultados, setMoodsResultados] = useState([]);
   const [cancionesResponse, setCancionesResponse] = useState([]);
-  console.log("Canciones Response:", cancionesResponse);
   const [userID, setUserID] = useState(null);
 
   const [showPopup, setShowPopup] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
 
   useEffect(() => {
-    // Muestra el pop-up cuando el componente se carga
     setShowPopup(true);
     setShowOverlay(true);
   }, []);
 
   const handlePopupClose = () => {
-    // Cierra el pop-up y navega a otra página
     setShowPopup(false);
     setShowOverlay(false); 
   };
@@ -106,11 +101,8 @@ useEffect(() => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    const user_id = localStorage.getItem("user_id"); // Obtiene el ID del usuario
-    console.log(token);
-    console.log(user_id);
+    const user_id = localStorage.getItem("user_id"); 
     if (token && user_id) {
-      // Actualiza el estado userID con el valor obtenido
       setUserID(user_id);
     }
   }, []);
@@ -127,9 +119,6 @@ useEffect(() => {
       setGenerosSeleccionados([...generosSeleccionados, generoName]);
     }
   };
-  useEffect(() => {
-    console.log("Canciones Response en efecto:", cancionesResponse);
-  }, [cancionesResponse]);
 
   const handleSubmit = async () => {
     if (userID) {
@@ -152,7 +141,6 @@ useEffect(() => {
           setCancionesResponse(resultadoFilter);
         } catch (error) {
           alert(error);
-          console.log("ERROR", error);
         }
 
         const userid = localStorage.getItem("user_id");
@@ -170,7 +158,6 @@ useEffect(() => {
             playlistId: playlistId,
             cancionName: songName,
           };
-          console.log("Añadiendo canción a la playlist:", songsPlaylist);
           await addCancionesPlaylist(songsPlaylist);
         });
 

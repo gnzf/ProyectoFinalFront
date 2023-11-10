@@ -94,7 +94,6 @@
     margin-top: 44px;
     color: var(--medios-tonos-gris-5, #26262e);
     text-align: center;
-    /* Headings/Heading 4 - 20px/Medium */
     font-family: Rubik;
     font-size: 20px;
     font-style: normal;
@@ -106,7 +105,6 @@
     text-align: center;
     color: var(--medios-tonos-gris-5, #26262e);
     text-align: center;
-    /* Body/Body Medium - 16px/Regular */
     font-family: Rubik;
     font-size: 16px;
     font-style: normal;

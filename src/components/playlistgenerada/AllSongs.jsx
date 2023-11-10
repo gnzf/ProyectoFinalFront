@@ -1,7 +1,5 @@
 import React from 'react'
 import "./AllSongs.css"
-import prueba from "../../../public/images/playlistgenerada/image-placeholder.svg"
-import optionsSongs from "../../../public/images/playlistgenerada/icon-right-placeholder.svg"
 
 function AllSongs(props) {
   const formatDuration = (seconds) => {

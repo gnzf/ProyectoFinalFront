@@ -7,7 +7,6 @@ import { useEffect } from "react";
 function Configuration() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  console.log("Token:", token);
 
   useEffect(() => {
       if (!token) {

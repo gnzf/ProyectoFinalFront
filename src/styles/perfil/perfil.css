@@ -65,11 +65,6 @@
   gap: 130px;
 }
 
-/* .seprator {
-  color: #26262e;
-  border: 2px solid #26262e;
-} */
-
 .title-playlists {
   font-weight: 500;
   font-size: 16px;
@@ -97,7 +92,6 @@
   flex: 1 1;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   column-gap: 40px;
-/*   gap: 20px; */
   width: 100%;
   padding: 0 40px;
   overflow: auto;
