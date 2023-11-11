@@ -19,7 +19,7 @@ function Match({onPrev, likedImages}) {
             alt=""
             style={{
               zIndex: likedImages.length + index,
-              transform: `translateX(-${index * 50}px)` // Ajusta el espaciado vertical
+              transform: `translateX(-${index * 50}px)` // Ajusta el espaciado horizontal
             }}
           />
         ))}
